@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "niveau", catalog = "gestionecole")
-public class Niveau {
+public class Niveau  {
 
 	private int idNiveau;
 	private String niveau;

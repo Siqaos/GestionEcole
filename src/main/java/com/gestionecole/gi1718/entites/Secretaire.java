@@ -10,15 +10,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+
 @Entity
 @Table(name = "secretaire", catalog = "gestionecole")
-@PrimaryKeyJoinColumn(name = "idPersonne")
-public class Secretaire extends Personne {
+public class Secretaire {
 
 	private int idSecretaire;
 	private Salaire salaire;
@@ -101,12 +100,6 @@ public class Secretaire extends Personne {
 
 	public void setPersonnes(Set<Personne> personnes) {
 		this.personnes = personnes;
-	}
-
-	@Override
-	public String toString() {
-		return "Secretaire [idSecretaire=" + idSecretaire + ", matricule=" + matricule + ", cin=" + cin
-				+ ", dateDebutTravail=" + dateDebutTravail + "]";
 	}
 
 }

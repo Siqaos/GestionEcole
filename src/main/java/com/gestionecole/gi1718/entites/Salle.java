@@ -59,9 +59,4 @@ public class Salle {
 		this.seances = seances;
 	}
 
-	@Override
-	public String toString() {
-		return "Salle [idSalle=" + idSalle + ", numSalle=" + numSalle + "]";
-	}
-
 }

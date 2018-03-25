@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "anneescolaire", catalog = "gestionecole")
-public class Anneescolaire {
+public class Anneescolaire{
 
 	private int idAnneeScolaire;
 	private String anneeScolaire;
@@ -69,11 +69,6 @@ public class Anneescolaire {
 
 	public void setSessions(Set<Session> sessions) {
 		this.sessions = sessions;
-	}
-
-	@Override
-	public String toString() {
-		return "Anneescolaire [idAnneeScolaire=" + idAnneeScolaire + ", anneeScolaire=" + anneeScolaire + "]";
 	}
 
 }

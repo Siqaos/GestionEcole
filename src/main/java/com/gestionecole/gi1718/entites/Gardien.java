@@ -103,10 +103,4 @@ public class Gardien extends Personne {
 		this.personnes = personnes;
 	}
 
-	@Override
-	public String toString() {
-		return "Gardien [idGardien=" + idGardien + ", matricule=" + matricule + ", cin=" + cin + ", dateDebutTravail="
-				+ dateDebutTravail + "]";
-	}
-
 }

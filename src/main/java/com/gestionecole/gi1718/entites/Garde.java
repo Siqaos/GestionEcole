@@ -103,10 +103,4 @@ public class Garde {
 		this.paiements = paiements;
 	}
 
-	@Override
-	public String toString() {
-		return "Garde [idGarde=" + idGarde + ", aide=" + aide + ", horaire=" + horaire + ", professeur=" + professeur
-				+ ", tarifs=" + tarifs + ", paiements=" + paiements + "]";
-	}
-
 }

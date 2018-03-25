@@ -11,17 +11,18 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name = "horaire", catalog = "gestionecole")
-public class Horaire {
+public class Horaire  {
 
 	private int idHoraire;
 	private Transport transport;
 	private String heureDebut;
 	private String heureFin;
+	private Set<Seance> seances = new HashSet<Seance>(0);
 	private Set<Examen> examens = new HashSet<Examen>(0);
 	private Set<Garde> gardes = new HashSet<Garde>(0);
-	private Set<Enseignement> enseignements = new HashSet<Enseignement>(0);
 
 	public Horaire() {
 	}
@@ -31,15 +32,15 @@ public class Horaire {
 		this.transport = transport;
 	}
 
-	public Horaire(int idHoraire, Transport transport, String heureDebut, String heureFin, Set<Examen> examens,
-			Set<Garde> gardes, Set<Enseignement> enseignements) {
+	public Horaire(int idHoraire, Transport transport, String heureDebut, String heureFin, Set<Seance> seances,
+			Set<Examen> examens, Set<Garde> gardes) {
 		this.idHoraire = idHoraire;
 		this.transport = transport;
 		this.heureDebut = heureDebut;
 		this.heureFin = heureFin;
+		this.seances = seances;
 		this.examens = examens;
 		this.gardes = gardes;
-		this.enseignements = enseignements;
 	}
 
 	@Id
@@ -82,6 +83,15 @@ public class Horaire {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "horaire")
+	public Set<Seance> getSeances() {
+		return this.seances;
+	}
+
+	public void setSeances(Set<Seance> seances) {
+		this.seances = seances;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "horaire")
 	public Set<Examen> getExamens() {
 		return this.examens;
 	}
@@ -97,22 +107,6 @@ public class Horaire {
 
 	public void setGardes(Set<Garde> gardes) {
 		this.gardes = gardes;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "horaire")
-	public Set<Enseignement> getEnseignements() {
-		return this.enseignements;
-	}
-
-	public void setEnseignements(Set<Enseignement> enseignements) {
-		this.enseignements = enseignements;
-	}
-
-	@Override
-	public String toString() {
-		return "Horaire [idHoraire=" + idHoraire + ", transport=" + transport + ", heureDebut=" + heureDebut
-				+ ", heureFin=" + heureFin + ", examens=" + examens + ", gardes=" + gardes + ", enseignements="
-				+ enseignements + "]";
 	}
 
 }

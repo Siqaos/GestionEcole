@@ -13,10 +13,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "transport", catalog = "gestionecole")
-public class Transport  {
+public class Transport {
 
 	private int idTransport;
 	private Paiement paiement;
+	private int paiementFactureIdFacture;
 	private Set<Tarifs> tarifses = new HashSet<Tarifs>(0);
 	private Set<Horaire> horaires = new HashSet<Horaire>(0);
 	private Set<Vehicule> vehicules = new HashSet<Vehicule>(0);
@@ -26,15 +27,17 @@ public class Transport  {
 	public Transport() {
 	}
 
-	public Transport(int idTransport, Paiement paiement) {
+	public Transport(int idTransport, Paiement paiement, int paiementFactureIdFacture) {
 		this.idTransport = idTransport;
 		this.paiement = paiement;
+		this.paiementFactureIdFacture = paiementFactureIdFacture;
 	}
 
 	public Transport(int idTransport, Paiement paiement, int paiementFactureIdFacture, Set<Tarifs> tarifses,
 			Set<Horaire> horaires, Set<Vehicule> vehicules, Set<Positiongps> positiongpses, Set<Aide> aides) {
 		this.idTransport = idTransport;
 		this.paiement = paiement;
+		this.paiementFactureIdFacture = paiementFactureIdFacture;
 		this.tarifses = tarifses;
 		this.horaires = horaires;
 		this.vehicules = vehicules;
@@ -61,6 +64,15 @@ public class Transport  {
 
 	public void setPaiement(Paiement paiement) {
 		this.paiement = paiement;
+	}
+
+	@Column(name = "Paiement_Facture_idFacture", nullable = false)
+	public int getPaiementFactureIdFacture() {
+		return this.paiementFactureIdFacture;
+	}
+
+	public void setPaiementFactureIdFacture(int paiementFactureIdFacture) {
+		this.paiementFactureIdFacture = paiementFactureIdFacture;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "transport")
@@ -107,7 +119,5 @@ public class Transport  {
 	public void setAides(Set<Aide> aides) {
 		this.aides = aides;
 	}
-
-
 
 }

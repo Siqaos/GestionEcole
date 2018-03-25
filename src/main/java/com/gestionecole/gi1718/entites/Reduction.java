@@ -8,9 +8,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name = "reduction", catalog = "gestionecole")
-public class Reduction  {
+public class Reduction {
 
 	private int idReduction;
 	private Tarifs tarifs;
@@ -69,12 +70,6 @@ public class Reduction  {
 
 	public void setTypeReduction(String typeReduction) {
 		this.typeReduction = typeReduction;
-	}
-
-	@Override
-	public String toString() {
-		return "Reduction [idReduction=" + idReduction + ", tarifs=" + tarifs + ", prctageReduction=" + prctageReduction
-				+ ", typeReduction=" + typeReduction + "]";
 	}
 
 }

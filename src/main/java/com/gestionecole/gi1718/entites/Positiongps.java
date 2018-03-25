@@ -13,13 +13,15 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "positiongps", catalog = "gestionecole")
-public class Positiongps{
+public class Positiongps  {
 
 	private int idPosition;
 	private Transport transport;
 	private String latitude;
 	private String longitude;
 	private String altitude;
+	private int elevePositionGpsIdPosition;
+	private int elevePersonneIdPersonne;
 	private Set<Eleve> eleves = new HashSet<Eleve>(0);
 
 	public Positiongps() {
@@ -29,16 +31,19 @@ public class Positiongps{
 			int elevePersonneIdPersonne) {
 		this.idPosition = idPosition;
 		this.transport = transport;
-
+		this.elevePositionGpsIdPosition = elevePositionGpsIdPosition;
+		this.elevePersonneIdPersonne = elevePersonneIdPersonne;
 	}
 
-	public Positiongps(int idPosition, Transport transport, String latitude, String longitude, String altitude, Set<Eleve> eleves) {
+	public Positiongps(int idPosition, Transport transport, String latitude, String longitude, String altitude,
+			int elevePositionGpsIdPosition, int elevePersonneIdPersonne, Set<Eleve> eleves) {
 		this.idPosition = idPosition;
 		this.transport = transport;
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.altitude = altitude;
-
+		this.elevePositionGpsIdPosition = elevePositionGpsIdPosition;
+		this.elevePersonneIdPersonne = elevePersonneIdPersonne;
 		this.eleves = eleves;
 	}
 
@@ -90,7 +95,23 @@ public class Positiongps{
 		this.altitude = altitude;
 	}
 
+	@Column(name = "Eleve_PositionGPS_idPosition", nullable = false)
+	public int getElevePositionGpsIdPosition() {
+		return this.elevePositionGpsIdPosition;
+	}
 
+	public void setElevePositionGpsIdPosition(int elevePositionGpsIdPosition) {
+		this.elevePositionGpsIdPosition = elevePositionGpsIdPosition;
+	}
+
+	@Column(name = "Eleve_Personne_idPersonne", nullable = false)
+	public int getElevePersonneIdPersonne() {
+		return this.elevePersonneIdPersonne;
+	}
+
+	public void setElevePersonneIdPersonne(int elevePersonneIdPersonne) {
+		this.elevePersonneIdPersonne = elevePersonneIdPersonne;
+	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "positiongps")
 	public Set<Eleve> getEleves() {
@@ -99,12 +120,6 @@ public class Positiongps{
 
 	public void setEleves(Set<Eleve> eleves) {
 		this.eleves = eleves;
-	}
-
-	@Override
-	public String toString() {
-		return "Positiongps [idPosition=" + idPosition + ", transport=" + transport + ", latitude=" + latitude
-				+ ", longitude=" + longitude + ", altitude=" + altitude;
 	}
 
 }

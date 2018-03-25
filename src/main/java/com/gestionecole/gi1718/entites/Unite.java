@@ -76,9 +76,4 @@ public class Unite {
 		this.matieres = matieres;
 	}
 
-	@Override
-	public String toString() {
-		return "Unite [idUnite=" + idUnite + ", nomUnite=" + nomUnite + "]";
-	}
-
 }

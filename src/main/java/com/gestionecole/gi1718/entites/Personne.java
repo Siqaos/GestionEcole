@@ -1,6 +1,7 @@
 package com.gestionecole.gi1718.entites;
 
 import java.util.HashSet;
+
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,10 +13,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+
 @Entity
 @Table(name = "personne", catalog = "gestionecole")
 @Inheritance(strategy=InheritanceType.JOINED)
-public class Personne  {
+public abstract class Personne {
 
 	private int idPersonne;
 	private Contact contact;
@@ -41,7 +44,6 @@ public class Personne  {
 	private Set<Aide> aides = new HashSet<Aide>(0);
 
 	public Personne() {
-		super();
 	}
 
 	public Personne(int idPersonne, Contact contact, Directeur directeur, Femmedemenage femmedemenage, Gardien gardien,
@@ -288,13 +290,6 @@ public class Personne  {
 
 	public void setAides(Set<Aide> aides) {
 		this.aides = aides;
-	}
-
-	@Override
-	public String toString() {
-		return "Personne [idPersonne=" + idPersonne + ", sexe=" + sexe + ", nom=" + nom + ", prenom=" + prenom
-				+ ", dateDeNaissance=" + dateDeNaissance + ", email=" + email + ", adresse=" + adresse + ", tel=" + tel
-				+ ", codePostale=" + codePostale + ", ville=" + ville + ", pays=" + pays + "]";
 	}
 
 }

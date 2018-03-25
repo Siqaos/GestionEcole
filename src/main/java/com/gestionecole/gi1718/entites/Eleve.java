@@ -26,7 +26,7 @@ public class Eleve extends Personne {
 	private Responsable responsable;
 	private String matricule;
 	private Set<Retard> retards = new HashSet<Retard>(0);
-	private Set<Bulletin> bulletin = new HashSet<Bulletin>(0);
+	private Set<Bulletin> bulletins = new HashSet<Bulletin>(0);
 	private Set<Observation> observations = new HashSet<Observation>(0);
 	private Set<Absence> absences = new HashSet<Absence>(0);
 
@@ -46,7 +46,7 @@ public class Eleve extends Personne {
 
 	public Eleve(int idEleve, Classe classe, Inscription inscription, Niveau niveau, Personne personne,
 			Positiongps positiongps, Responsable responsable, String matricule, Set<Retard> retards,
-			Set<Bulletin> bulletin, Set<Observation> observations, Set<Absence> absences) {
+			Set<Bulletin> bulletins, Set<Observation> observations, Set<Absence> absences) {
 		this.idEleve = idEleve;
 		this.classe = classe;
 		this.inscription = inscription;
@@ -56,7 +56,7 @@ public class Eleve extends Personne {
 		this.responsable = responsable;
 		this.matricule = matricule;
 		this.retards = retards;
-		this.bulletin = bulletin;
+		this.bulletins = bulletins;
 		this.observations = observations;
 		this.absences = absences;
 	}
@@ -151,12 +151,12 @@ public class Eleve extends Personne {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "eleve")
-	public Set<Bulletin> getBultiens() {
-		return this.bulletin;
+	public Set<Bulletin> getBulletins() {
+		return this.bulletins;
 	}
 
-	public void setBultiens(Set<Bulletin> bulletin) {
-		this.bulletin = bulletin;
+	public void setBulletins(Set<Bulletin> bulletins) {
+		this.bulletins = bulletins;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "eleve")
@@ -175,11 +175,6 @@ public class Eleve extends Personne {
 
 	public void setAbsences(Set<Absence> absences) {
 		this.absences = absences;
-	}
-
-	@Override
-	public String toString() {
-		return "Eleve [idEleve=" + idEleve + ", matricule=" + matricule + "]";
 	}
 
 }

@@ -127,9 +127,4 @@ public class Salaire  {
 		this.gestionnaires = gestionnaires;
 	}
 
-	@Override
-	public String toString() {
-		return "Salaire [idSalaire=" + idSalaire + ", salaire=" + salaire + "]";
-	}
-
 }

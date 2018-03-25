@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "role", catalog = "gestionecole")
-public class Role {
+public class Role  {
 
 	private int idrole;
 	private User user;
@@ -70,12 +70,6 @@ public class Role {
 
 	public void setUserPersonneIdPersonne(int userPersonneIdPersonne) {
 		this.userPersonneIdPersonne = userPersonneIdPersonne;
-	}
-
-	@Override
-	public String toString() {
-		return "Role [idrole=" + idrole + ", nomRole=" + nomRole + ", userPersonneIdPersonne=" + userPersonneIdPersonne
-				+ "]";
 	}
 
 }

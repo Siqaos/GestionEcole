@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 @Entity
 @Table(name = "cahiertexte", catalog = "gestionecole")
 public class Cahiertexte {
@@ -98,12 +99,6 @@ public class Cahiertexte {
 
 	public void setSeances(Set<Seance> seances) {
 		this.seances = seances;
-	}
-
-	@Override
-	public String toString() {
-		return "Cahiertexte [idCahiertexte=" + idCahiertexte + ", date=" + date + ", heure=" + heure + ", tache="
-				+ tache + "]";
 	}
 
 }

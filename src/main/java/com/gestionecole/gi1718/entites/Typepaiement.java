@@ -13,11 +13,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "typepaiement", catalog = "gestionecole")
-public class Typepaiement {
+public class Typepaiement{
 
 	private int idTypePaye;
 	private Paiement paiement;
-	private String typePaiement;
+	private String typePaiementcol;
 	private Set<Cheque> cheques = new HashSet<Cheque>(0);
 
 	public Typepaiement() {
@@ -28,10 +28,10 @@ public class Typepaiement {
 		this.paiement = paiement;
 	}
 
-	public Typepaiement(int idTypePaye, Paiement paiement, String typePaiement, Set<Cheque> cheques) {
+	public Typepaiement(int idTypePaye, Paiement paiement, String typePaiementcol, Set<Cheque> cheques) {
 		this.idTypePaye = idTypePaye;
 		this.paiement = paiement;
-		this.typePaiement = typePaiement;
+		this.typePaiementcol = typePaiementcol;
 		this.cheques = cheques;
 	}
 
@@ -56,13 +56,13 @@ public class Typepaiement {
 		this.paiement = paiement;
 	}
 
-	@Column(name = "TypePaiement", length = 45)
+	@Column(name = "TypePaiementcol", length = 45)
 	public String getTypePaiementcol() {
-		return this.typePaiement;
+		return this.typePaiementcol;
 	}
 
-	public void setTypePaiement(String typePaiement) {
-		this.typePaiement = typePaiement;
+	public void setTypePaiementcol(String typePaiementcol) {
+		this.typePaiementcol = typePaiementcol;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "typepaiement")
@@ -72,11 +72,6 @@ public class Typepaiement {
 
 	public void setCheques(Set<Cheque> cheques) {
 		this.cheques = cheques;
-	}
-
-	@Override
-	public String toString() {
-		return "Typepaiement [idTypePaye=" + idTypePaye + ", typePaiement=" + typePaiement + "]";
 	}
 
 }

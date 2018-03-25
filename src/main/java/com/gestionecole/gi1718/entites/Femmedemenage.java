@@ -14,6 +14,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 @Entity
 @Table(name = "femmedemenage", catalog = "gestionecole")
 @PrimaryKeyJoinColumn(name = "idPersonne")
@@ -100,12 +101,6 @@ public class Femmedemenage extends Personne {
 
 	public void setPersonnes(Set<Personne> personnes) {
 		this.personnes = personnes;
-	}
-
-	@Override
-	public String toString() {
-		return "Femmedemenage [idFemmedemenage=" + idFemmedemenage + ", matricule=" + matricule + ", cin=" + cin
-				+ ", dateDebutTravail=" + dateDebutTravail + "]";
 	}
 
 }

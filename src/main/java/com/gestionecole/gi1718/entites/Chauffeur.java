@@ -102,10 +102,4 @@ public class Chauffeur extends Personne {
 		this.dateDebutTravail = dateDebutTravail;
 	}
 
-	@Override
-	public String toString() {
-		return "Chauffeur [idChauffeur=" + idChauffeur + ", matricule=" + matricule + ", cin=" + cin
-				+ ", dateDebutTravail=" + dateDebutTravail + "]";
-	}
-
 }

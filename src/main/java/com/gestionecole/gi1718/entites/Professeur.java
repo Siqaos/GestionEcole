@@ -11,7 +11,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
-
 @Entity
 @Table(name = "professeur", catalog = "gestionecole")
 @PrimaryKeyJoinColumn(name = "idPersonne")
@@ -24,7 +23,7 @@ public class Professeur extends Personne {
 	private String cin;
 	private String diplome;
 	private Set<Cahiertexte> cahiertextes = new HashSet<Cahiertexte>(0);
-	private Set<Enseignement> enseignements = new HashSet<Enseignement>(0);
+	private Set<Seance> seances = new HashSet<Seance>(0);
 	private Set<Garde> gardes = new HashSet<Garde>(0);
 
 	public Professeur() {
@@ -37,7 +36,7 @@ public class Professeur extends Personne {
 	}
 
 	public Professeur(int idProfesseur, Personne personne, Salaire salaire, String matricule, String cin,
-			String diplome, Set<Cahiertexte> cahiertextes, Set<Enseignement> enseignements, Set<Garde> gardes) {
+			String diplome, Set<Cahiertexte> cahiertextes, Set<Seance> seances, Set<Garde> gardes) {
 		this.idProfesseur = idProfesseur;
 		this.personne = personne;
 		this.salaire = salaire;
@@ -45,7 +44,7 @@ public class Professeur extends Personne {
 		this.cin = cin;
 		this.diplome = diplome;
 		this.cahiertextes = cahiertextes;
-		this.enseignements = enseignements;
+		this.seances = seances;
 		this.gardes = gardes;
 	}
 
@@ -117,12 +116,12 @@ public class Professeur extends Personne {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "professeur")
-	public Set<Enseignement> getEnseignements() {
-		return this.enseignements;
+	public Set<Seance> getSeances() {
+		return this.seances;
 	}
 
-	public void setEnseignements(Set<Enseignement> enseignements) {
-		this.enseignements = enseignements;
+	public void setSeances(Set<Seance> seances) {
+		this.seances = seances;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "professeur")
@@ -132,12 +131,6 @@ public class Professeur extends Personne {
 
 	public void setGardes(Set<Garde> gardes) {
 		this.gardes = gardes;
-	}
-
-	@Override
-	public String toString() {
-		return "Professeur [idProfesseur=" + idProfesseur + ", personne=" + personne + ", salaire=" + salaire
-				+ ", matricule=" + matricule + ", cin=" + cin + ", diplome=" + diplome + "]";
 	}
 
 }

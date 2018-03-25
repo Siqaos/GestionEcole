@@ -8,6 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name = "devoir", catalog = "gestionecole")
 public class Devoir  {
@@ -80,12 +81,6 @@ public class Devoir  {
 
 	public void setAfairele(String afairele) {
 		this.afairele = afairele;
-	}
-
-	@Override
-	public String toString() {
-		return "Devoir [idDevoir=" + idDevoir + ", tache=" + tache + ", dateDevoir=" + dateDevoir + ", afairele="
-				+ afairele + "]";
 	}
 
 }

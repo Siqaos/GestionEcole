@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "paiement", catalog = "gestionecole")
-public class Paiement {
+public class Paiement  {
 
 	private int idPaiement;
 	private Garde garde;

@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "fournisseur", catalog = "gestionecole")
-public class Fournisseur  {
+public class Fournisseur {
 
 	private int idFournisseur;
 	private String addresse;
@@ -79,12 +79,6 @@ public class Fournisseur  {
 
 	public void setContacts(Set<Contact> contacts) {
 		this.contacts = contacts;
-	}
-
-	@Override
-	public String toString() {
-		return "Fournisseur [idFournisseur=" + idFournisseur + ", addresse=" + addresse + ", email=" + email
-				+ ", factures=" + factures + "]";
 	}
 
 }

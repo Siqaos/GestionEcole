@@ -21,7 +21,7 @@ public class Matiere {
 	private String coeficient;
 	private String nombreHeure;
 	private String nombreExamen;
-	private Set<Enseignement> enseignements = new HashSet<Enseignement>(0);
+	private Set<Seance> seances = new HashSet<Seance>(0);
 	private Set<Examen> examens = new HashSet<Examen>(0);
 
 	public Matiere() {
@@ -33,14 +33,14 @@ public class Matiere {
 	}
 
 	public Matiere(int idMatiere, Unite unite, String nomMatiere, String coeficient, String nombreHeure,
-			String nombreExamen, Set<Enseignement> enseignements, Set<Examen> examens) {
+			String nombreExamen, Set<Seance> seances, Set<Examen> examens) {
 		this.idMatiere = idMatiere;
 		this.unite = unite;
 		this.nomMatiere = nomMatiere;
 		this.coeficient = coeficient;
 		this.nombreHeure = nombreHeure;
 		this.nombreExamen = nombreExamen;
-		this.enseignements = enseignements;
+		this.seances = seances;
 		this.examens = examens;
 	}
 
@@ -102,12 +102,12 @@ public class Matiere {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "matiere")
-	public Set<Enseignement> getEnseignements() {
-		return this.enseignements;
+	public Set<Seance> getSeances() {
+		return this.seances;
 	}
 
-	public void setEnseignements(Set<Enseignement> enseignements) {
-		this.enseignements = enseignements;
+	public void setSeances(Set<Seance> seances) {
+		this.seances = seances;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "matiere")
@@ -117,13 +117,6 @@ public class Matiere {
 
 	public void setExamens(Set<Examen> examens) {
 		this.examens = examens;
-	}
-
-	@Override
-	public String toString() {
-		return "Matiere [idMatiere=" + idMatiere + ", unite=" + unite + ", nomMatiere=" + nomMatiere + ", coeficient="
-				+ coeficient + ", nombreHeure=" + nombreHeure + ", nombreExamen=" + nombreExamen + ", enseignements="
-				+ enseignements + ", examens=" + examens + "]";
 	}
 
 }

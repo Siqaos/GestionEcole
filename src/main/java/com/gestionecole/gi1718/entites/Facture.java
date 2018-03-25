@@ -73,9 +73,4 @@ public class Facture  {
 		this.date = date;
 	}
 
-	@Override
-	public String toString() {
-		return "Facture [idFacture=" + idFacture + ", date=" + date + "]";
-	}
-
 }

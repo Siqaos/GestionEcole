@@ -12,10 +12,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-
 @Entity
 @Table(name = "absence", catalog = "gestionecole")
-public class Absence{
+public class Absence {
 
 	private int idAbsence;
 	private Eleve eleve;
@@ -78,11 +77,5 @@ public class Absence{
 	public void setDateAbsence(Date dateAbsence) {
 		this.dateAbsence = dateAbsence;
 	}
-
-	@Override
-	public String toString() {
-		return "Absence [idAbsence=" + idAbsence + ", seance=" + seance + ", dateAbsence=" + dateAbsence + "]";
-	}
-
 
 }

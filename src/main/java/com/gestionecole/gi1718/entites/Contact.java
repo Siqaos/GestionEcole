@@ -12,10 +12,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name = "contact", catalog = "gestionecole")
 @PrimaryKeyJoinColumn(name = "idPersonne")
-public class Contact extends Personne {
+public class Contact extends Personne  {
 
 	private int idContact;
 	private Fournisseur fournisseur;
@@ -63,11 +64,6 @@ public class Contact extends Personne {
 
 	public void setPersonnes(Set<Personne> personnes) {
 		this.personnes = personnes;
-	}
-
-	@Override
-	public String toString() {
-		return "Contact [idContact=" + idContact + ", fournisseur=" + fournisseur + "]";
 	}
 
 }

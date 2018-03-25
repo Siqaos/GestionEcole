@@ -16,7 +16,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "vehicule", catalog = "gestionecole")
-public class Vehicule {
+public class Vehicule  {
 
 	private int idVehicule;
 	private Transport transport;
@@ -99,12 +99,6 @@ public class Vehicule {
 
 	public void setChauffeurs(Set<Chauffeur> chauffeurs) {
 		this.chauffeurs = chauffeurs;
-	}
-
-	@Override
-	public String toString() {
-		return "Vehicule [idVehicule=" + idVehicule + ", matricule=" + matricule + ", modele=" + modele
-				+ ", dateDachat=" + dateDachat + "]";
 	}
 
 }

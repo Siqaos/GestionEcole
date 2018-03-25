@@ -10,7 +10,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 @Entity
 @Table(name = "examen", catalog = "gestionecole")
 public class Examen {
@@ -97,11 +96,6 @@ public class Examen {
 
 	public void setNotes(Set<Note> notes) {
 		this.notes = notes;
-	}
-
-	@Override
-	public String toString() {
-		return "Examen [idExamen=" + idExamen + ", numExamen=" + numExamen + ", pourcentage=" + pourcentage + "]";
 	}
 
 }

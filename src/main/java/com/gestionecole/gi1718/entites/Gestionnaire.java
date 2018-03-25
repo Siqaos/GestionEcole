@@ -14,10 +14,11 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 @Entity
 @Table(name = "gestionnaire", catalog = "gestionecole")
 @PrimaryKeyJoinColumn(name = "idPersonne")
-public class Gestionnaire extends Personne {
+public class Gestionnaire extends Personne{
 
 	private int idGestionnaire;
 	private Salaire salaire;
@@ -100,12 +101,6 @@ public class Gestionnaire extends Personne {
 
 	public void setPersonnes(Set<Personne> personnes) {
 		this.personnes = personnes;
-	}
-
-	@Override
-	public String toString() {
-		return "Gestionnaire [idGestionnaire=" + idGestionnaire + ", salaire=" + salaire + ", matricule=" + matricule
-				+ ", cin=" + cin + ", dateDebutTravail=" + dateDebutTravail + ", personnes=" + personnes + "]";
 	}
 
 }

@@ -11,14 +11,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name = "classe", catalog = "gestionecole")
-public class Classe {
+public class Classe  {
 
 	private int idClasse;
 	private Niveau niveau;
-	private Set<Enseignement> enseignements = new HashSet<Enseignement>(0);
 	private Set<Eleve> eleves = new HashSet<Eleve>(0);
+	private Set<Seance> seances = new HashSet<Seance>(0);
 
 	public Classe() {
 	}
@@ -28,11 +29,11 @@ public class Classe {
 		this.niveau = niveau;
 	}
 
-	public Classe(int idClasse, Niveau niveau, Set<Enseignement> enseignements, Set<Eleve> eleves) {
+	public Classe(int idClasse, Niveau niveau, Set<Eleve> eleves, Set<Seance> seances) {
 		this.idClasse = idClasse;
 		this.niveau = niveau;
-		this.enseignements = enseignements;
 		this.eleves = eleves;
+		this.seances = seances;
 	}
 
 	@Id
@@ -57,15 +58,6 @@ public class Classe {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "classe")
-	public Set<Enseignement> getEnseignements() {
-		return this.enseignements;
-	}
-
-	public void setEnseignements(Set<Enseignement> enseignements) {
-		this.enseignements = enseignements;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "classe")
 	public Set<Eleve> getEleves() {
 		return this.eleves;
 	}
@@ -74,9 +66,13 @@ public class Classe {
 		this.eleves = eleves;
 	}
 
-	@Override
-	public String toString() {
-		return "Classe [idClasse=" + idClasse + "]";
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "classe")
+	public Set<Seance> getSeances() {
+		return this.seances;
+	}
+
+	public void setSeances(Set<Seance> seances) {
+		this.seances = seances;
 	}
 
 }

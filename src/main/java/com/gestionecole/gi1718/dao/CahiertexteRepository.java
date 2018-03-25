@@ -8,6 +8,6 @@ import com.gestionecole.gi1718.entites.Cahiertexte;
 
 
 @Repository
-public interface CahiertextRepository extends CrudRepository<Cahiertexte, Integer> {
+public interface CahiertexteRepository extends CrudRepository<Cahiertexte, Integer> {
 
 }

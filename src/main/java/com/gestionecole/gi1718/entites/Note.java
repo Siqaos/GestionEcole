@@ -1,61 +1,51 @@
 package com.gestionecole.gi1718.entites;
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 @Entity
 @Table(name = "note", catalog = "gestionecole")
-public class Note  {
+public class Note {
 
-	private NoteId id;
-	private Bulletin bultien;
+	private int idNote;
 	private Examen examen;
 	private String noteExam;
 	private String remarque;
+	private Set<Bulletin> bulletins = new HashSet<Bulletin>(0);
 
 	public Note() {
 	}
 
-	public Note(NoteId id, Bulletin bultien, Examen examen) {
-		this.id = id;
-		this.bultien = bultien;
+	public Note(int idNote, Examen examen) {
+		this.idNote = idNote;
 		this.examen = examen;
 	}
 
-	public Note(NoteId id, Bulletin bultien, Examen examen, String noteExam, String remarque) {
-		this.id = id;
-		this.bultien = bultien;
+	public Note(int idNote, Examen examen, String noteExam, String remarque, Set<Bulletin> bulletins) {
+		this.idNote = idNote;
 		this.examen = examen;
 		this.noteExam = noteExam;
 		this.remarque = remarque;
+		this.bulletins = bulletins;
 	}
 
-	@EmbeddedId
+	@Id
 
-	@AttributeOverrides({ @AttributeOverride(name = "idNote", column = @Column(name = "idNote", nullable = false)),
-			@AttributeOverride(name = "bultienIdResultats", column = @Column(name = "bultien_idResultats", nullable = false)) })
-	public NoteId getId() {
-		return this.id;
+	@Column(name = "idNote", unique = true, nullable = false)
+	public int getIdNote() {
+		return this.idNote;
 	}
 
-	public void setId(NoteId id) {
-		this.id = id;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "bultien_idResultats", nullable = false, insertable = false, updatable = false)
-	public Bulletin getBultien() {
-		return this.bultien;
-	}
-
-	public void setBultien(Bulletin bultien) {
-		this.bultien = bultien;
+	public void setIdNote(int idNote) {
+		this.idNote = idNote;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -86,10 +76,13 @@ public class Note  {
 		this.remarque = remarque;
 	}
 
-	@Override
-	public String toString() {
-		return "Note [id=" + id + ", bultien=" + bultien + ", examen=" + examen + ", noteExam=" + noteExam
-				+ ", remarque=" + remarque + "]";
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "note")
+	public Set<Bulletin> getBulletins() {
+		return this.bulletins;
+	}
+
+	public void setBulletins(Set<Bulletin> bulletins) {
+		this.bulletins = bulletins;
 	}
 
 }

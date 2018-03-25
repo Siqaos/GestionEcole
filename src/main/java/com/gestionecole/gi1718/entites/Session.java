@@ -10,27 +10,29 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 @Entity
 @Table(name = "session", catalog = "gestionecole")
-public class Session {
+public class Session  {
 
 	private int idSession;
 	private Anneescolaire anneescolaire;
-	private Set<Bulletin> bulletin = new HashSet<Bulletin>(0);
+	private int resultatsEtudiantIdEleve;
+	private Set<Bulletin> bulletins = new HashSet<Bulletin>(0);
 
 	public Session() {
 	}
 
-	public Session(int idSession, Anneescolaire anneescolaire) {
+	public Session(int idSession, Anneescolaire anneescolaire, int resultatsEtudiantIdEleve) {
 		this.idSession = idSession;
 		this.anneescolaire = anneescolaire;
+		this.resultatsEtudiantIdEleve = resultatsEtudiantIdEleve;
 	}
 
-	public Session(int idSession, Anneescolaire anneescolaire, Set<Bulletin> bulletin) {
+	public Session(int idSession, Anneescolaire anneescolaire, int resultatsEtudiantIdEleve, Set<Bulletin> bulletins) {
 		this.idSession = idSession;
 		this.anneescolaire = anneescolaire;
-		this.bulletin = bulletin;
+		this.resultatsEtudiantIdEleve = resultatsEtudiantIdEleve;
+		this.bulletins = bulletins;
 	}
 
 	@Id
@@ -54,19 +56,22 @@ public class Session {
 		this.anneescolaire = anneescolaire;
 	}
 
-	
+	@Column(name = "Resultats_Etudiant_idEleve", nullable = false)
+	public int getResultatsEtudiantIdEleve() {
+		return this.resultatsEtudiantIdEleve;
+	}
+
+	public void setResultatsEtudiantIdEleve(int resultatsEtudiantIdEleve) {
+		this.resultatsEtudiantIdEleve = resultatsEtudiantIdEleve;
+	}
+
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "session")
-	public Set<Bulletin> getBultiens() {
-		return this.bulletin;
+	public Set<Bulletin> getBulletins() {
+		return this.bulletins;
 	}
 
-	public void setBultiens(Set<Bulletin> bulletin) {
-		this.bulletin = bulletin;
-	}
-
-	@Override
-	public String toString() {
-		return "Session [idSession=" + idSession + ", anneescolaire=" + anneescolaire + "]";
+	public void setBulletins(Set<Bulletin> bulletins) {
+		this.bulletins = bulletins;
 	}
 
 }

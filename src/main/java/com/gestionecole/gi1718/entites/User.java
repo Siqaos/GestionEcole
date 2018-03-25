@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "user", catalog = "gestionecole")
-public class User {
+public class User  {
 
 	private int idUser;
 	private Personne personne;
@@ -83,11 +83,6 @@ public class User {
 
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
-	}
-
-	@Override
-	public String toString() {
-		return "User [idUser=" + idUser + ", username=" + username + ", password=" + password + "]";
 	}
 
 }

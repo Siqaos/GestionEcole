@@ -16,7 +16,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "inscription", catalog = "gestionecole")
-public class Inscription  {
+public class Inscription {
 
 	private int idInscription;
 	private Anneescolaire anneescolaire;
@@ -103,12 +103,6 @@ public class Inscription  {
 
 	public void setEleves(Set<Eleve> eleves) {
 		this.eleves = eleves;
-	}
-
-	@Override
-	public String toString() {
-		return "Inscription [idInscription=" + idInscription + ", anneescolaire=" + anneescolaire + ", paiement="
-				+ paiement + ", tarifs=" + tarifs + ", dateInscription=" + dateInscription + ", eleves=" + eleves + "]";
 	}
 
 }

@@ -110,11 +110,4 @@ public class Observation  {
 		this.elevePersonneIdPersonne = elevePersonneIdPersonne;
 	}
 
-	@Override
-	public String toString() {
-		return "Observation [idObservation=" + idObservation + ", eleve=" + eleve + ", seance=" + seance + ", remarque="
-				+ remarque + ", date=" + date + ", elevePositionGpsIdPosition=" + elevePositionGpsIdPosition
-				+ ", elevePersonneIdPersonne=" + elevePersonneIdPersonne + "]";
-	}
-
 }

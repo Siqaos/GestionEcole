@@ -71,9 +71,4 @@ public class Cheque {
 		this.nomCheque = nomCheque;
 	}
 
-	@Override
-	public String toString() {
-		return "Cheque [idCheque=" + idCheque + ", numeroCheque=" + numeroCheque + ", nomCheque=" + nomCheque + "]";
-	}
-
 }
