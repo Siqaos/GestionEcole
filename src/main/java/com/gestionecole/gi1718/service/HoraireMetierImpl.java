@@ -1,7 +1,5 @@
 package com.gestionecole.gi1718.service;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +7,7 @@ import com.gestionecole.gi1718.dao.HoraireRepository;
 import com.gestionecole.gi1718.entites.Horaire;
 
 @Service
-public class HoraireMetierImpl implements HoraireService {
+public class HoraireMetierImpl implements HoraireService  {
 	@Autowired
 	private HoraireRepository HoraireRepository;
 
@@ -24,23 +22,23 @@ public class HoraireMetierImpl implements HoraireService {
 	}
 
 	@Override
+	public void delete(Integer arg0) {
+		HoraireRepository.delete(arg0);
+	}
+
+	@Override
+	public void delete(Iterable<? extends Horaire> arg0) {
+		HoraireRepository.delete(arg0);
+	}
+
+	@Override
 	public void deleteAll() {
 		HoraireRepository.deleteAll();
 	}
 
 	@Override
-	public void deleteAll(Iterable<? extends Horaire> arg0) {
-		HoraireRepository.deleteAll(arg0);
-	}
-
-	@Override
-	public void deleteById(Integer arg0) {
-		HoraireRepository.deleteById(arg0);
-	}
-
-	@Override
-	public boolean existsById(Integer arg0) {
-		return HoraireRepository.existsById(arg0);
+	public boolean exists(Integer arg0) {
+		return HoraireRepository.exists(arg0);
 	}
 
 	@Override
@@ -49,13 +47,18 @@ public class HoraireMetierImpl implements HoraireService {
 	}
 
 	@Override
-	public Iterable<Horaire> findAllById(Iterable<Integer> arg0) {
-		return HoraireRepository.findAllById(arg0);
+	public Iterable<Horaire> findAll(Iterable<Integer> arg0) {
+		return HoraireRepository.findAll(arg0);
 	}
 
 	@Override
-	public Optional<Horaire> findById(Integer arg0) {
-		return HoraireRepository.findById(arg0);
+	public Horaire findOne(Integer arg0) {
+		return HoraireRepository.findOne(arg0);
+	}
+
+	@Override
+	public <S extends Horaire> Iterable<S> save(Iterable<S> arg0) {
+		return HoraireRepository.save(arg0);
 	}
 
 	@Override
@@ -63,10 +66,6 @@ public class HoraireMetierImpl implements HoraireService {
 		return HoraireRepository.save(arg0);
 	}
 
-	@Override
-	public <S extends Horaire> Iterable<S> saveAll(Iterable<S> arg0) {
-		return HoraireRepository.saveAll(arg0);
-	}
 	
 	
 }

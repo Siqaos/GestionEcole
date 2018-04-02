@@ -1,7 +1,5 @@
 package com.gestionecole.gi1718.service;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +7,7 @@ import com.gestionecole.gi1718.dao.CahiertexteRepository;
 import com.gestionecole.gi1718.entites.Cahiertexte;
 
 @Service
-public class CahiertexteMetierImpl implements CahiertexteService {
+public class CahiertexteMetierImpl implements CahietexteService  {
 	@Autowired
 	private CahiertexteRepository CahiertexteRepository;
 
@@ -24,23 +22,23 @@ public class CahiertexteMetierImpl implements CahiertexteService {
 	}
 
 	@Override
+	public void delete(Integer arg0) {
+		CahiertexteRepository.delete(arg0);
+	}
+
+	@Override
+	public void delete(Iterable<? extends Cahiertexte> arg0) {
+		CahiertexteRepository.delete(arg0);
+	}
+
+	@Override
 	public void deleteAll() {
 		CahiertexteRepository.deleteAll();
 	}
 
 	@Override
-	public void deleteAll(Iterable<? extends Cahiertexte> arg0) {
-		CahiertexteRepository.deleteAll(arg0);
-	}
-
-	@Override
-	public void deleteById(Integer arg0) {
-		CahiertexteRepository.deleteById(arg0);
-	}
-
-	@Override
-	public boolean existsById(Integer arg0) {
-		return CahiertexteRepository.existsById(arg0);
+	public boolean exists(Integer arg0) {
+		return CahiertexteRepository.exists(arg0);
 	}
 
 	@Override
@@ -49,13 +47,18 @@ public class CahiertexteMetierImpl implements CahiertexteService {
 	}
 
 	@Override
-	public Iterable<Cahiertexte> findAllById(Iterable<Integer> arg0) {
-		return CahiertexteRepository.findAllById(arg0);
+	public Iterable<Cahiertexte> findAll(Iterable<Integer> arg0) {
+		return CahiertexteRepository.findAll(arg0);
 	}
 
 	@Override
-	public Optional<Cahiertexte> findById(Integer arg0) {
-		return CahiertexteRepository.findById(arg0);
+	public Cahiertexte findOne(Integer arg0) {
+		return CahiertexteRepository.findOne(arg0);
+	}
+
+	@Override
+	public <S extends Cahiertexte> Iterable<S> save(Iterable<S> arg0) {
+		return CahiertexteRepository.save(arg0);
 	}
 
 	@Override
@@ -63,12 +66,7 @@ public class CahiertexteMetierImpl implements CahiertexteService {
 		return CahiertexteRepository.save(arg0);
 	}
 
-	@Override
-	public <S extends Cahiertexte> Iterable<S> saveAll(Iterable<S> arg0) {
-		return CahiertexteRepository.saveAll(arg0);
-	}
-
-
+	
 	
 	
 }

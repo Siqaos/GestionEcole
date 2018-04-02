@@ -1,7 +1,5 @@
 package com.gestionecole.gi1718.service;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,23 +22,23 @@ public class AnneeScolaireMetierImpl implements AnneeScolaireService {
 	}
 
 	@Override
+	public void delete(Integer arg0) {
+		AnneescolaireRepository.delete(arg0);
+	}
+
+	@Override
+	public void delete(Iterable<? extends Anneescolaire> arg0) {
+		AnneescolaireRepository.delete(arg0);
+	}
+
+	@Override
 	public void deleteAll() {
 		AnneescolaireRepository.deleteAll();
 	}
 
 	@Override
-	public void deleteAll(Iterable<? extends Anneescolaire> arg0) {
-		AnneescolaireRepository.deleteAll(arg0);
-	}
-
-	@Override
-	public void deleteById(Integer arg0) {
-		AnneescolaireRepository.deleteById(arg0);
-	}
-
-	@Override
-	public boolean existsById(Integer arg0) {
-		return AnneescolaireRepository.existsById(arg0);
+	public boolean exists(Integer arg0) {
+		return AnneescolaireRepository.exists(arg0);
 	}
 
 	@Override
@@ -49,13 +47,18 @@ public class AnneeScolaireMetierImpl implements AnneeScolaireService {
 	}
 
 	@Override
-	public Iterable<Anneescolaire> findAllById(Iterable<Integer> arg0) {
-		return AnneescolaireRepository.findAllById(arg0);
+	public Iterable<Anneescolaire> findAll(Iterable<Integer> arg0) {
+		return AnneescolaireRepository.findAll(arg0);
 	}
 
 	@Override
-	public Optional<Anneescolaire> findById(Integer arg0) {
-		return AnneescolaireRepository.findById(arg0);
+	public Anneescolaire findOne(Integer arg0) {
+		return AnneescolaireRepository.findOne(arg0);
+	}
+
+	@Override
+	public <S extends Anneescolaire> Iterable<S> save(Iterable<S> arg0) {
+		return AnneescolaireRepository.save(arg0);
 	}
 
 	@Override
@@ -63,10 +66,6 @@ public class AnneeScolaireMetierImpl implements AnneeScolaireService {
 		return AnneescolaireRepository.save(arg0);
 	}
 
-	@Override
-	public <S extends Anneescolaire> Iterable<S> saveAll(Iterable<S> arg0) {
-		return AnneescolaireRepository.saveAll(arg0);
-	}
 	
 	
 }

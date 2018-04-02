@@ -2,10 +2,8 @@ package com.gestionecole.gi1718.entites;
 
 import java.util.HashSet;
 import java.util.Set;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -18,34 +16,22 @@ import javax.persistence.Table;
 @PrimaryKeyJoinColumn(name = "idPersonne")
 public class Contact extends Personne  {
 
-	private int idContact;
 	private Fournisseur fournisseur;
 	private Set<Personne> personnes = new HashSet<Personne>(0);
 
 	public Contact() {
 	}
 
-	public Contact(int idContact, Fournisseur fournisseur) {
-		this.idContact = idContact;
+	public Contact( Fournisseur fournisseur) {
 		this.fournisseur = fournisseur;
 	}
 
-	public Contact(int idContact, Fournisseur fournisseur, Set<Personne> personnes) {
-		this.idContact = idContact;
+	public Contact(Fournisseur fournisseur, Set<Personne> personnes) {
 		this.fournisseur = fournisseur;
 		this.personnes = personnes;
 	}
 
-	@Id
 
-	@Column(name = "idContact", unique = true, nullable = false)
-	public int getIdContact() {
-		return this.idContact;
-	}
-
-	public void setIdContact(int idContact) {
-		this.idContact = idContact;
-	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "fournisseur_idFournisseur", nullable = false)

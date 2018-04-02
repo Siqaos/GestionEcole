@@ -1,7 +1,5 @@
 package com.gestionecole.gi1718.service;
 
-import java.util.Optional;
-
 import com.gestionecole.gi1718.entites.Gestionnaire;
 
 public interface GestionnaireService {
@@ -10,22 +8,22 @@ public interface GestionnaireService {
 
 	void delete(Gestionnaire arg0);
 
+	void delete(Integer arg0);
+
+	void delete(Iterable<? extends Gestionnaire> arg0);
+
 	void deleteAll();
 
-	void deleteAll(Iterable<? extends Gestionnaire> arg0);
-
-	void deleteById(Integer arg0);
-
-	boolean existsById(Integer arg0);
+	boolean exists(Integer arg0);
 
 	Iterable<Gestionnaire> findAll();
 
-	Iterable<Gestionnaire> findAllById(Iterable<Integer> arg0);
+	Iterable<Gestionnaire> findAll(Iterable<Integer> arg0);
 
-	Optional<Gestionnaire> findById(Integer arg0);
+	Gestionnaire findOne(Integer arg0);
+
+	<S extends Gestionnaire> Iterable<S> save(Iterable<S> arg0);
 
 	<S extends Gestionnaire> S save(S arg0);
-
-	<S extends Gestionnaire> Iterable<S> saveAll(Iterable<S> arg0);
 
 }

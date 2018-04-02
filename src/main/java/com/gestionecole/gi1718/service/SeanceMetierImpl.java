@@ -1,7 +1,5 @@
 package com.gestionecole.gi1718.service;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +17,16 @@ public class SeanceMetierImpl implements SeanceService {
 	}
 
 	@Override
+	public void delete(Integer arg0) {
+		SeanceRepository.delete(arg0);
+	}
+
+	@Override
+	public void delete(Iterable<? extends Seance> arg0) {
+		SeanceRepository.delete(arg0);
+	}
+
+	@Override
 	public void delete(Seance arg0) {
 		SeanceRepository.delete(arg0);
 	}
@@ -29,18 +37,8 @@ public class SeanceMetierImpl implements SeanceService {
 	}
 
 	@Override
-	public void deleteAll(Iterable<? extends Seance> arg0) {
-		SeanceRepository.deleteAll(arg0);
-	}
-
-	@Override
-	public void deleteById(Integer arg0) {
-		SeanceRepository.deleteById(arg0);
-	}
-
-	@Override
-	public boolean existsById(Integer arg0) {
-		return SeanceRepository.existsById(arg0);
+	public boolean exists(Integer arg0) {
+		return SeanceRepository.exists(arg0);
 	}
 
 	@Override
@@ -49,13 +47,18 @@ public class SeanceMetierImpl implements SeanceService {
 	}
 
 	@Override
-	public Iterable<Seance> findAllById(Iterable<Integer> arg0) {
-		return SeanceRepository.findAllById(arg0);
+	public Iterable<Seance> findAll(Iterable<Integer> arg0) {
+		return SeanceRepository.findAll(arg0);
 	}
 
 	@Override
-	public Optional<Seance> findById(Integer arg0) {
-		return SeanceRepository.findById(arg0);
+	public Seance findOne(Integer arg0) {
+		return SeanceRepository.findOne(arg0);
+	}
+
+	@Override
+	public <S extends Seance> Iterable<S> save(Iterable<S> arg0) {
+		return SeanceRepository.save(arg0);
 	}
 
 	@Override
@@ -63,10 +66,7 @@ public class SeanceMetierImpl implements SeanceService {
 		return SeanceRepository.save(arg0);
 	}
 
-	@Override
-	public <S extends Seance> Iterable<S> saveAll(Iterable<S> arg0) {
-		return SeanceRepository.saveAll(arg0);
-	}
+	
 	
 	
 }

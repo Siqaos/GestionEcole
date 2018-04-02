@@ -5,7 +5,6 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -16,7 +15,6 @@ import javax.persistence.Table;
 @PrimaryKeyJoinColumn(name = "idPersonne")
 public class Professeur extends Personne {
 
-	private int idProfesseur;
 	private Personne personne;
 	private Salaire salaire;
 	private String matricule;
@@ -29,15 +27,13 @@ public class Professeur extends Personne {
 	public Professeur() {
 	}
 
-	public Professeur(int idProfesseur, Personne personne, Salaire salaire) {
-		this.idProfesseur = idProfesseur;
+	public Professeur( Personne personne, Salaire salaire) {
 		this.personne = personne;
 		this.salaire = salaire;
 	}
 
-	public Professeur(int idProfesseur, Personne personne, Salaire salaire, String matricule, String cin,
+	public Professeur( Personne personne, Salaire salaire, String matricule, String cin,
 			String diplome, Set<Cahiertexte> cahiertextes, Set<Seance> seances, Set<Garde> gardes) {
-		this.idProfesseur = idProfesseur;
 		this.personne = personne;
 		this.salaire = salaire;
 		this.matricule = matricule;
@@ -48,16 +44,6 @@ public class Professeur extends Personne {
 		this.gardes = gardes;
 	}
 
-	@Id
-
-	@Column(name = "idProfesseur", unique = true, nullable = false)
-	public int getIdProfesseur() {
-		return this.idProfesseur;
-	}
-
-	public void setIdProfesseur(int idProfesseur) {
-		this.idProfesseur = idProfesseur;
-	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "Personne_idPersonne", nullable = false)

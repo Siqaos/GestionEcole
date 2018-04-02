@@ -6,7 +6,6 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -20,7 +19,6 @@ import javax.persistence.TemporalType;
 @PrimaryKeyJoinColumn(name = "idPersonne")
 public class Gestionnaire extends Personne{
 
-	private int idGestionnaire;
 	private Salaire salaire;
 	private String matricule;
 	private String cin;
@@ -30,14 +28,12 @@ public class Gestionnaire extends Personne{
 	public Gestionnaire() {
 	}
 
-	public Gestionnaire(int idGestionnaire, Salaire salaire) {
-		this.idGestionnaire = idGestionnaire;
+	public Gestionnaire( Salaire salaire) {
 		this.salaire = salaire;
 	}
 
-	public Gestionnaire(int idGestionnaire, Salaire salaire, String matricule, String cin, Date dateDebutTravail,
+	public Gestionnaire( Salaire salaire, String matricule, String cin, Date dateDebutTravail,
 			Set<Personne> personnes) {
-		this.idGestionnaire = idGestionnaire;
 		this.salaire = salaire;
 		this.matricule = matricule;
 		this.cin = cin;
@@ -45,16 +41,6 @@ public class Gestionnaire extends Personne{
 		this.personnes = personnes;
 	}
 
-	@Id
-
-	@Column(name = "idGestionnaire", unique = true, nullable = false)
-	public int getIdGestionnaire() {
-		return this.idGestionnaire;
-	}
-
-	public void setIdGestionnaire(int idGestionnaire) {
-		this.idGestionnaire = idGestionnaire;
-	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "salaire_idSalaire", nullable = false)

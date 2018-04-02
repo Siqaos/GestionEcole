@@ -1,7 +1,5 @@
 package com.gestionecole.gi1718.service;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +17,16 @@ public class PaiementMetierImpl implements PaiementService {
 	}
 
 	@Override
+	public void delete(Integer arg0) {
+		PaiementRepository.delete(arg0);
+	}
+
+	@Override
+	public void delete(Iterable<? extends Paiement> arg0) {
+		PaiementRepository.delete(arg0);
+	}
+
+	@Override
 	public void delete(Paiement arg0) {
 		PaiementRepository.delete(arg0);
 	}
@@ -29,18 +37,8 @@ public class PaiementMetierImpl implements PaiementService {
 	}
 
 	@Override
-	public void deleteAll(Iterable<? extends Paiement> arg0) {
-		PaiementRepository.deleteAll(arg0);
-	}
-
-	@Override
-	public void deleteById(Integer arg0) {
-		PaiementRepository.deleteById(arg0);
-	}
-
-	@Override
-	public boolean existsById(Integer arg0) {
-		return PaiementRepository.existsById(arg0);
+	public boolean exists(Integer arg0) {
+		return PaiementRepository.exists(arg0);
 	}
 
 	@Override
@@ -49,13 +47,18 @@ public class PaiementMetierImpl implements PaiementService {
 	}
 
 	@Override
-	public Iterable<Paiement> findAllById(Iterable<Integer> arg0) {
-		return PaiementRepository.findAllById(arg0);
+	public Iterable<Paiement> findAll(Iterable<Integer> arg0) {
+		return PaiementRepository.findAll(arg0);
 	}
 
 	@Override
-	public Optional<Paiement> findById(Integer arg0) {
-		return PaiementRepository.findById(arg0);
+	public Paiement findOne(Integer arg0) {
+		return PaiementRepository.findOne(arg0);
+	}
+
+	@Override
+	public <S extends Paiement> Iterable<S> save(Iterable<S> arg0) {
+		return PaiementRepository.save(arg0);
 	}
 
 	@Override
@@ -63,10 +66,6 @@ public class PaiementMetierImpl implements PaiementService {
 		return PaiementRepository.save(arg0);
 	}
 
-	@Override
-	public <S extends Paiement> Iterable<S> saveAll(Iterable<S> arg0) {
-		return PaiementRepository.saveAll(arg0);
-	}
 	
 	
 }

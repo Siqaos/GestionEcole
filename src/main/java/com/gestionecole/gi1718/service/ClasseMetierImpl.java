@@ -1,7 +1,5 @@
 package com.gestionecole.gi1718.service;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,23 +22,23 @@ public class ClasseMetierImpl implements ClasseService {
 	}
 
 	@Override
+	public void delete(Integer arg0) {
+		ClasseRepository.delete(arg0);
+	}
+
+	@Override
+	public void delete(Iterable<? extends Classe> arg0) {
+		ClasseRepository.delete(arg0);
+	}
+
+	@Override
 	public void deleteAll() {
 		ClasseRepository.deleteAll();
 	}
 
 	@Override
-	public void deleteAll(Iterable<? extends Classe> arg0) {
-		ClasseRepository.deleteAll(arg0);
-	}
-
-	@Override
-	public void deleteById(Integer arg0) {
-		ClasseRepository.deleteById(arg0);
-	}
-
-	@Override
-	public boolean existsById(Integer arg0) {
-		return ClasseRepository.existsById(arg0);
+	public boolean exists(Integer arg0) {
+		return ClasseRepository.exists(arg0);
 	}
 
 	@Override
@@ -49,13 +47,18 @@ public class ClasseMetierImpl implements ClasseService {
 	}
 
 	@Override
-	public Iterable<Classe> findAllById(Iterable<Integer> arg0) {
-		return ClasseRepository.findAllById(arg0);
+	public Iterable<Classe> findAll(Iterable<Integer> arg0) {
+		return ClasseRepository.findAll(arg0);
 	}
 
 	@Override
-	public Optional<Classe> findById(Integer arg0) {
-		return ClasseRepository.findById(arg0);
+	public Classe findOne(Integer arg0) {
+		return ClasseRepository.findOne(arg0);
+	}
+
+	@Override
+	public <S extends Classe> Iterable<S> save(Iterable<S> arg0) {
+		return ClasseRepository.save(arg0);
 	}
 
 	@Override
@@ -63,10 +66,7 @@ public class ClasseMetierImpl implements ClasseService {
 		return ClasseRepository.save(arg0);
 	}
 
-	@Override
-	public <S extends Classe> Iterable<S> saveAll(Iterable<S> arg0) {
-		return ClasseRepository.saveAll(arg0);
-	}
+	
 	
 	
 }

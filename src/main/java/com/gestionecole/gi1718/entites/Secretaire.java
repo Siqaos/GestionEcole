@@ -6,10 +6,10 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -17,9 +17,9 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "secretaire", catalog = "gestionecole")
-public class Secretaire {
+@PrimaryKeyJoinColumn(name = "idPersonne")
+public class Secretaire extends Personne {
 
-	private int idSecretaire;
 	private Salaire salaire;
 	private String matricule;
 	private String cin;
@@ -29,14 +29,12 @@ public class Secretaire {
 	public Secretaire() {
 	}
 
-	public Secretaire(int idSecretaire, Salaire salaire) {
-		this.idSecretaire = idSecretaire;
+	public Secretaire( Salaire salaire) {
 		this.salaire = salaire;
 	}
 
-	public Secretaire(int idSecretaire, Salaire salaire, String matricule, String cin, Date dateDebutTravail,
+	public Secretaire( Salaire salaire, String matricule, String cin, Date dateDebutTravail,
 			Set<Personne> personnes) {
-		this.idSecretaire = idSecretaire;
 		this.salaire = salaire;
 		this.matricule = matricule;
 		this.cin = cin;
@@ -44,16 +42,6 @@ public class Secretaire {
 		this.personnes = personnes;
 	}
 
-	@Id
-
-	@Column(name = "idSecretaire", unique = true, nullable = false)
-	public int getIdSecretaire() {
-		return this.idSecretaire;
-	}
-
-	public void setIdSecretaire(int idSecretaire) {
-		this.idSecretaire = idSecretaire;
-	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "salaire_idSalaire", nullable = false)

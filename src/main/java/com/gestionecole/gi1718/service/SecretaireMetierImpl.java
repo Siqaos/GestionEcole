@@ -1,7 +1,5 @@
 package com.gestionecole.gi1718.service;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +17,16 @@ public class SecretaireMetierImpl implements SecretaireService {
 	}
 
 	@Override
+	public void delete(Integer arg0) {
+		SecretaireRepository.delete(arg0);
+	}
+
+	@Override
+	public void delete(Iterable<? extends Secretaire> arg0) {
+		SecretaireRepository.delete(arg0);
+	}
+
+	@Override
 	public void delete(Secretaire arg0) {
 		SecretaireRepository.delete(arg0);
 	}
@@ -29,18 +37,8 @@ public class SecretaireMetierImpl implements SecretaireService {
 	}
 
 	@Override
-	public void deleteAll(Iterable<? extends Secretaire> arg0) {
-		SecretaireRepository.deleteAll(arg0);
-	}
-
-	@Override
-	public void deleteById(Integer arg0) {
-		SecretaireRepository.deleteById(arg0);
-	}
-
-	@Override
-	public boolean existsById(Integer arg0) {
-		return SecretaireRepository.existsById(arg0);
+	public boolean exists(Integer arg0) {
+		return SecretaireRepository.exists(arg0);
 	}
 
 	@Override
@@ -49,13 +47,18 @@ public class SecretaireMetierImpl implements SecretaireService {
 	}
 
 	@Override
-	public Iterable<Secretaire> findAllById(Iterable<Integer> arg0) {
-		return SecretaireRepository.findAllById(arg0);
+	public Iterable<Secretaire> findAll(Iterable<Integer> arg0) {
+		return SecretaireRepository.findAll(arg0);
 	}
 
 	@Override
-	public Optional<Secretaire> findById(Integer arg0) {
-		return SecretaireRepository.findById(arg0);
+	public Secretaire findOne(Integer arg0) {
+		return SecretaireRepository.findOne(arg0);
+	}
+
+	@Override
+	public <S extends Secretaire> Iterable<S> save(Iterable<S> arg0) {
+		return SecretaireRepository.save(arg0);
 	}
 
 	@Override
@@ -63,10 +66,6 @@ public class SecretaireMetierImpl implements SecretaireService {
 		return SecretaireRepository.save(arg0);
 	}
 
-	@Override
-	public <S extends Secretaire> Iterable<S> saveAll(Iterable<S> arg0) {
-		return SecretaireRepository.saveAll(arg0);
-	}
-	
+		
 	
 }

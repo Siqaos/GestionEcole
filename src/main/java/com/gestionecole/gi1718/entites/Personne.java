@@ -44,6 +44,7 @@ public abstract class Personne {
 	private Set<Aide> aides = new HashSet<Aide>(0);
 
 	public Personne() {
+		super();
 	}
 
 	public Personne(int idPersonne, Contact contact, Directeur directeur, Femmedemenage femmedemenage, Gardien gardien,
@@ -184,7 +185,7 @@ public abstract class Personne {
 		this.prenom = prenom;
 	}
 
-	@Column(name = "Date de naissance", length = 45)
+	@Column(name = "DateDenaissance", length = 45)
 	public String getDateDeNaissance() {
 		return this.dateDeNaissance;
 	}
@@ -220,7 +221,7 @@ public abstract class Personne {
 		this.tel = tel;
 	}
 
-	@Column(name = "Code postale", length = 45)
+	@Column(name = "Code_postale", length = 45)
 	public String getCodePostale() {
 		return this.codePostale;
 	}

@@ -6,7 +6,6 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -20,7 +19,6 @@ import javax.persistence.TemporalType;
 @PrimaryKeyJoinColumn(name = "idPersonne")
 public class Gardien extends Personne {
 
-	private int idGardien;
 	private Salaire salaire;
 	private String matricule;
 	private String cin;
@@ -30,14 +28,12 @@ public class Gardien extends Personne {
 	public Gardien() {
 	}
 
-	public Gardien(int idGardien, Salaire salaire) {
-		this.idGardien = idGardien;
+	public Gardien( Salaire salaire) {
 		this.salaire = salaire;
 	}
 
-	public Gardien(int idGardien, Salaire salaire, String matricule, String cin, Date dateDebutTravail,
+	public Gardien( Salaire salaire, String matricule, String cin, Date dateDebutTravail,
 			Set<Personne> personnes) {
-		this.idGardien = idGardien;
 		this.salaire = salaire;
 		this.matricule = matricule;
 		this.cin = cin;
@@ -45,16 +41,6 @@ public class Gardien extends Personne {
 		this.personnes = personnes;
 	}
 
-	@Id
-
-	@Column(name = "idGardien", unique = true, nullable = false)
-	public int getIdGardien() {
-		return this.idGardien;
-	}
-
-	public void setIdGardien(int idGardien) {
-		this.idGardien = idGardien;
-	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "salaire_idSalaire", nullable = false)

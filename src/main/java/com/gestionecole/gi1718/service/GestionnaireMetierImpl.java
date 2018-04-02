@@ -1,7 +1,5 @@
 package com.gestionecole.gi1718.service;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +7,7 @@ import com.gestionecole.gi1718.dao.GestionnaireRepository;
 import com.gestionecole.gi1718.entites.Gestionnaire;
 
 @Service
-public class GestionnaireMetierImpl implements GestionnaireService {
+public class GestionnaireMetierImpl implements GestionnaireService  {
 	@Autowired
 	private GestionnaireRepository GestionnaireRepository;
 
@@ -24,23 +22,23 @@ public class GestionnaireMetierImpl implements GestionnaireService {
 	}
 
 	@Override
+	public void delete(Integer arg0) {
+		GestionnaireRepository.delete(arg0);
+	}
+
+	@Override
+	public void delete(Iterable<? extends Gestionnaire> arg0) {
+		GestionnaireRepository.delete(arg0);
+	}
+
+	@Override
 	public void deleteAll() {
 		GestionnaireRepository.deleteAll();
 	}
 
 	@Override
-	public void deleteAll(Iterable<? extends Gestionnaire> arg0) {
-		GestionnaireRepository.deleteAll(arg0);
-	}
-
-	@Override
-	public void deleteById(Integer arg0) {
-		GestionnaireRepository.deleteById(arg0);
-	}
-
-	@Override
-	public boolean existsById(Integer arg0) {
-		return GestionnaireRepository.existsById(arg0);
+	public boolean exists(Integer arg0) {
+		return GestionnaireRepository.exists(arg0);
 	}
 
 	@Override
@@ -49,13 +47,18 @@ public class GestionnaireMetierImpl implements GestionnaireService {
 	}
 
 	@Override
-	public Iterable<Gestionnaire> findAllById(Iterable<Integer> arg0) {
-		return GestionnaireRepository.findAllById(arg0);
+	public Iterable<Gestionnaire> findAll(Iterable<Integer> arg0) {
+		return GestionnaireRepository.findAll(arg0);
 	}
 
 	@Override
-	public Optional<Gestionnaire> findById(Integer arg0) {
-		return GestionnaireRepository.findById(arg0);
+	public Gestionnaire findOne(Integer arg0) {
+		return GestionnaireRepository.findOne(arg0);
+	}
+
+	@Override
+	public <S extends Gestionnaire> Iterable<S> save(Iterable<S> arg0) {
+		return GestionnaireRepository.save(arg0);
 	}
 
 	@Override
@@ -63,10 +66,7 @@ public class GestionnaireMetierImpl implements GestionnaireService {
 		return GestionnaireRepository.save(arg0);
 	}
 
-	@Override
-	public <S extends Gestionnaire> Iterable<S> saveAll(Iterable<S> arg0) {
-		return GestionnaireRepository.saveAll(arg0);
-	}
+	
 	
 	
 }

@@ -1,7 +1,5 @@
 package com.gestionecole.gi1718.service;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +17,16 @@ public class UniteMetierImpl implements UniteService {
 	}
 
 	@Override
+	public void delete(Integer arg0) {
+		UniteRepository.delete(arg0);
+	}
+
+	@Override
+	public void delete(Iterable<? extends Unite> arg0) {
+		UniteRepository.delete(arg0);
+	}
+
+	@Override
 	public void delete(Unite arg0) {
 		UniteRepository.delete(arg0);
 	}
@@ -29,18 +37,8 @@ public class UniteMetierImpl implements UniteService {
 	}
 
 	@Override
-	public void deleteAll(Iterable<? extends Unite> arg0) {
-		UniteRepository.deleteAll(arg0);
-	}
-
-	@Override
-	public void deleteById(Integer arg0) {
-		UniteRepository.deleteById(arg0);
-	}
-
-	@Override
-	public boolean existsById(Integer arg0) {
-		return UniteRepository.existsById(arg0);
+	public boolean exists(Integer arg0) {
+		return UniteRepository.exists(arg0);
 	}
 
 	@Override
@@ -49,13 +47,18 @@ public class UniteMetierImpl implements UniteService {
 	}
 
 	@Override
-	public Iterable<Unite> findAllById(Iterable<Integer> arg0) {
-		return UniteRepository.findAllById(arg0);
+	public Iterable<Unite> findAll(Iterable<Integer> arg0) {
+		return UniteRepository.findAll(arg0);
 	}
 
 	@Override
-	public Optional<Unite> findById(Integer arg0) {
-		return UniteRepository.findById(arg0);
+	public Unite findOne(Integer arg0) {
+		return UniteRepository.findOne(arg0);
+	}
+
+	@Override
+	public <S extends Unite> Iterable<S> save(Iterable<S> arg0) {
+		return UniteRepository.save(arg0);
 	}
 
 	@Override
@@ -63,10 +66,7 @@ public class UniteMetierImpl implements UniteService {
 		return UniteRepository.save(arg0);
 	}
 
-	@Override
-	public <S extends Unite> Iterable<S> saveAll(Iterable<S> arg0) {
-		return UniteRepository.saveAll(arg0);
-	}
+	
 	
 	
 }

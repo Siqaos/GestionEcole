@@ -1,7 +1,5 @@
 package com.gestionecole.gi1718.service;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +17,16 @@ public class UserMetierImpl implements UserService {
 	}
 
 	@Override
+	public void delete(Integer arg0) {
+		UserRepository.delete(arg0);
+	}
+
+	@Override
+	public void delete(Iterable<? extends User> arg0) {
+		UserRepository.delete(arg0);
+	}
+
+	@Override
 	public void delete(User arg0) {
 		UserRepository.delete(arg0);
 	}
@@ -29,18 +37,8 @@ public class UserMetierImpl implements UserService {
 	}
 
 	@Override
-	public void deleteAll(Iterable<? extends User> arg0) {
-		UserRepository.deleteAll(arg0);
-	}
-
-	@Override
-	public void deleteById(Integer arg0) {
-		UserRepository.deleteById(arg0);
-	}
-
-	@Override
-	public boolean existsById(Integer arg0) {
-		return UserRepository.existsById(arg0);
+	public boolean exists(Integer arg0) {
+		return UserRepository.exists(arg0);
 	}
 
 	@Override
@@ -49,13 +47,18 @@ public class UserMetierImpl implements UserService {
 	}
 
 	@Override
-	public Iterable<User> findAllById(Iterable<Integer> arg0) {
-		return UserRepository.findAllById(arg0);
+	public Iterable<User> findAll(Iterable<Integer> arg0) {
+		return UserRepository.findAll(arg0);
 	}
 
 	@Override
-	public Optional<User> findById(Integer arg0) {
-		return UserRepository.findById(arg0);
+	public User findOne(Integer arg0) {
+		return UserRepository.findOne(arg0);
+	}
+
+	@Override
+	public <S extends User> Iterable<S> save(Iterable<S> arg0) {
+		return UserRepository.save(arg0);
 	}
 
 	@Override
@@ -63,10 +66,6 @@ public class UserMetierImpl implements UserService {
 		return UserRepository.save(arg0);
 	}
 
-	@Override
-	public <S extends User> Iterable<S> saveAll(Iterable<S> arg0) {
-		return UserRepository.saveAll(arg0);
-	}
 	
 	
 }

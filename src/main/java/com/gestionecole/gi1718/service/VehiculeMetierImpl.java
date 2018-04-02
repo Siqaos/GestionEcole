@@ -1,7 +1,5 @@
 package com.gestionecole.gi1718.service;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +17,16 @@ public class VehiculeMetierImpl implements VehiculeService {
 	}
 
 	@Override
+	public void delete(Integer arg0) {
+		VehiculeRepository.delete(arg0);
+	}
+
+	@Override
+	public void delete(Iterable<? extends Vehicule> arg0) {
+		VehiculeRepository.delete(arg0);
+	}
+
+	@Override
 	public void delete(Vehicule arg0) {
 		VehiculeRepository.delete(arg0);
 	}
@@ -29,18 +37,8 @@ public class VehiculeMetierImpl implements VehiculeService {
 	}
 
 	@Override
-	public void deleteAll(Iterable<? extends Vehicule> arg0) {
-		VehiculeRepository.deleteAll(arg0);
-	}
-
-	@Override
-	public void deleteById(Integer arg0) {
-		VehiculeRepository.deleteById(arg0);
-	}
-
-	@Override
-	public boolean existsById(Integer arg0) {
-		return VehiculeRepository.existsById(arg0);
+	public boolean exists(Integer arg0) {
+		return VehiculeRepository.exists(arg0);
 	}
 
 	@Override
@@ -49,13 +47,18 @@ public class VehiculeMetierImpl implements VehiculeService {
 	}
 
 	@Override
-	public Iterable<Vehicule> findAllById(Iterable<Integer> arg0) {
-		return VehiculeRepository.findAllById(arg0);
+	public Iterable<Vehicule> findAll(Iterable<Integer> arg0) {
+		return VehiculeRepository.findAll(arg0);
 	}
 
 	@Override
-	public Optional<Vehicule> findById(Integer arg0) {
-		return VehiculeRepository.findById(arg0);
+	public Vehicule findOne(Integer arg0) {
+		return VehiculeRepository.findOne(arg0);
+	}
+
+	@Override
+	public <S extends Vehicule> Iterable<S> save(Iterable<S> arg0) {
+		return VehiculeRepository.save(arg0);
 	}
 
 	@Override
@@ -63,10 +66,6 @@ public class VehiculeMetierImpl implements VehiculeService {
 		return VehiculeRepository.save(arg0);
 	}
 
-	@Override
-	public <S extends Vehicule> Iterable<S> saveAll(Iterable<S> arg0) {
-		return VehiculeRepository.saveAll(arg0);
-	}
 	
 	
 }

@@ -1,7 +1,5 @@
 package com.gestionecole.gi1718.service;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +7,7 @@ import com.gestionecole.gi1718.dao.InscriptionRepository;
 import com.gestionecole.gi1718.entites.Inscription;
 
 @Service
-public class InscriptionMetierImpl implements InscriptionService {
+public class InscriptionMetierImpl implements InscriptionService  {
 	@Autowired
 	private InscriptionRepository InscriptionRepository;
 
@@ -24,23 +22,23 @@ public class InscriptionMetierImpl implements InscriptionService {
 	}
 
 	@Override
+	public void delete(Integer arg0) {
+		InscriptionRepository.delete(arg0);
+	}
+
+	@Override
+	public void delete(Iterable<? extends Inscription> arg0) {
+		InscriptionRepository.delete(arg0);
+	}
+
+	@Override
 	public void deleteAll() {
 		InscriptionRepository.deleteAll();
 	}
 
 	@Override
-	public void deleteAll(Iterable<? extends Inscription> arg0) {
-		InscriptionRepository.deleteAll(arg0);
-	}
-
-	@Override
-	public void deleteById(Integer arg0) {
-		InscriptionRepository.deleteById(arg0);
-	}
-
-	@Override
-	public boolean existsById(Integer arg0) {
-		return InscriptionRepository.existsById(arg0);
+	public boolean exists(Integer arg0) {
+		return InscriptionRepository.exists(arg0);
 	}
 
 	@Override
@@ -49,13 +47,18 @@ public class InscriptionMetierImpl implements InscriptionService {
 	}
 
 	@Override
-	public Iterable<Inscription> findAllById(Iterable<Integer> arg0) {
-		return InscriptionRepository.findAllById(arg0);
+	public Iterable<Inscription> findAll(Iterable<Integer> arg0) {
+		return InscriptionRepository.findAll(arg0);
 	}
 
 	@Override
-	public Optional<Inscription> findById(Integer arg0) {
-		return InscriptionRepository.findById(arg0);
+	public Inscription findOne(Integer arg0) {
+		return InscriptionRepository.findOne(arg0);
+	}
+
+	@Override
+	public <S extends Inscription> Iterable<S> save(Iterable<S> arg0) {
+		return InscriptionRepository.save(arg0);
 	}
 
 	@Override
@@ -63,10 +66,6 @@ public class InscriptionMetierImpl implements InscriptionService {
 		return InscriptionRepository.save(arg0);
 	}
 
-	@Override
-	public <S extends Inscription> Iterable<S> saveAll(Iterable<S> arg0) {
-		return InscriptionRepository.saveAll(arg0);
-	}
 	
 	
 }

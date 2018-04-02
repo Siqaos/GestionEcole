@@ -1,7 +1,5 @@
 package com.gestionecole.gi1718.service;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +17,16 @@ public class PositiongpsMetierImpl implements PositiongpsService {
 	}
 
 	@Override
+	public void delete(Integer arg0) {
+		PositiongpsRepository.delete(arg0);
+	}
+
+	@Override
+	public void delete(Iterable<? extends Positiongps> arg0) {
+		PositiongpsRepository.delete(arg0);
+	}
+
+	@Override
 	public void delete(Positiongps arg0) {
 		PositiongpsRepository.delete(arg0);
 	}
@@ -29,18 +37,8 @@ public class PositiongpsMetierImpl implements PositiongpsService {
 	}
 
 	@Override
-	public void deleteAll(Iterable<? extends Positiongps> arg0) {
-		PositiongpsRepository.deleteAll(arg0);
-	}
-
-	@Override
-	public void deleteById(Integer arg0) {
-		PositiongpsRepository.deleteById(arg0);
-	}
-
-	@Override
-	public boolean existsById(Integer arg0) {
-		return PositiongpsRepository.existsById(arg0);
+	public boolean exists(Integer arg0) {
+		return PositiongpsRepository.exists(arg0);
 	}
 
 	@Override
@@ -49,13 +47,18 @@ public class PositiongpsMetierImpl implements PositiongpsService {
 	}
 
 	@Override
-	public Iterable<Positiongps> findAllById(Iterable<Integer> arg0) {
-		return PositiongpsRepository.findAllById(arg0);
+	public Iterable<Positiongps> findAll(Iterable<Integer> arg0) {
+		return PositiongpsRepository.findAll(arg0);
 	}
 
 	@Override
-	public Optional<Positiongps> findById(Integer arg0) {
-		return PositiongpsRepository.findById(arg0);
+	public Positiongps findOne(Integer arg0) {
+		return PositiongpsRepository.findOne(arg0);
+	}
+
+	@Override
+	public <S extends Positiongps> Iterable<S> save(Iterable<S> arg0) {
+		return PositiongpsRepository.save(arg0);
 	}
 
 	@Override
@@ -63,10 +66,7 @@ public class PositiongpsMetierImpl implements PositiongpsService {
 		return PositiongpsRepository.save(arg0);
 	}
 
-	@Override
-	public <S extends Positiongps> Iterable<S> saveAll(Iterable<S> arg0) {
-		return PositiongpsRepository.saveAll(arg0);
-	}
+	
 	
 	
 }

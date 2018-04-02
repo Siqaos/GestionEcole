@@ -1,7 +1,5 @@
 package com.gestionecole.gi1718.service;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +17,16 @@ public class NiveauMetierImpl implements NiveauService {
 	}
 
 	@Override
+	public void delete(Integer arg0) {
+		NiveauRepository.delete(arg0);
+	}
+
+	@Override
+	public void delete(Iterable<? extends Niveau> arg0) {
+		NiveauRepository.delete(arg0);
+	}
+
+	@Override
 	public void delete(Niveau arg0) {
 		NiveauRepository.delete(arg0);
 	}
@@ -29,18 +37,8 @@ public class NiveauMetierImpl implements NiveauService {
 	}
 
 	@Override
-	public void deleteAll(Iterable<? extends Niveau> arg0) {
-		NiveauRepository.deleteAll(arg0);
-	}
-
-	@Override
-	public void deleteById(Integer arg0) {
-		NiveauRepository.deleteById(arg0);
-	}
-
-	@Override
-	public boolean existsById(Integer arg0) {
-		return NiveauRepository.existsById(arg0);
+	public boolean exists(Integer arg0) {
+		return NiveauRepository.exists(arg0);
 	}
 
 	@Override
@@ -49,13 +47,18 @@ public class NiveauMetierImpl implements NiveauService {
 	}
 
 	@Override
-	public Iterable<Niveau> findAllById(Iterable<Integer> arg0) {
-		return NiveauRepository.findAllById(arg0);
+	public Iterable<Niveau> findAll(Iterable<Integer> arg0) {
+		return NiveauRepository.findAll(arg0);
 	}
 
 	@Override
-	public Optional<Niveau> findById(Integer arg0) {
-		return NiveauRepository.findById(arg0);
+	public Niveau findOne(Integer arg0) {
+		return NiveauRepository.findOne(arg0);
+	}
+
+	@Override
+	public <S extends Niveau> Iterable<S> save(Iterable<S> arg0) {
+		return NiveauRepository.save(arg0);
 	}
 
 	@Override
@@ -63,10 +66,7 @@ public class NiveauMetierImpl implements NiveauService {
 		return NiveauRepository.save(arg0);
 	}
 
-	@Override
-	public <S extends Niveau> Iterable<S> saveAll(Iterable<S> arg0) {
-		return NiveauRepository.saveAll(arg0);
-	}
+	
 	
 	
 }

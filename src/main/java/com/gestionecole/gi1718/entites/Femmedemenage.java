@@ -6,7 +6,6 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -20,7 +19,6 @@ import javax.persistence.TemporalType;
 @PrimaryKeyJoinColumn(name = "idPersonne")
 public class Femmedemenage extends Personne {
 
-	private int idFemmedemenage;
 	private Salaire salaire;
 	private String matricule;
 	private String cin;
@@ -30,30 +28,17 @@ public class Femmedemenage extends Personne {
 	public Femmedemenage() {
 	}
 
-	public Femmedemenage(int idFemmedemenage, Salaire salaire) {
-		this.idFemmedemenage = idFemmedemenage;
+	public Femmedemenage( Salaire salaire) {
 		this.salaire = salaire;
 	}
 
-	public Femmedemenage(int idFemmedemenage, Salaire salaire, String matricule, String cin, Date dateDebutTravail,
+	public Femmedemenage( Salaire salaire, String matricule, String cin, Date dateDebutTravail,
 			Set<Personne> personnes) {
-		this.idFemmedemenage = idFemmedemenage;
 		this.salaire = salaire;
 		this.matricule = matricule;
 		this.cin = cin;
 		this.dateDebutTravail = dateDebutTravail;
 		this.personnes = personnes;
-	}
-
-	@Id
-
-	@Column(name = "idFemmedemenage", unique = true, nullable = false)
-	public int getIdFemmedemenage() {
-		return this.idFemmedemenage;
-	}
-
-	public void setIdFemmedemenage(int idFemmedemenage) {
-		this.idFemmedemenage = idFemmedemenage;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)

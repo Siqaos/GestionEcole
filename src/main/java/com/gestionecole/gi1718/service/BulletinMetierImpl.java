@@ -1,7 +1,5 @@
 package com.gestionecole.gi1718.service;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,23 +22,23 @@ public class BulletinMetierImpl implements BulletinService {
 	}
 
 	@Override
+	public void delete(Integer arg0) {
+		BulletinRepository.delete(arg0);
+	}
+
+	@Override
+	public void delete(Iterable<? extends Bulletin> arg0) {
+		BulletinRepository.delete(arg0);
+	}
+
+	@Override
 	public void deleteAll() {
 		BulletinRepository.deleteAll();
 	}
 
 	@Override
-	public void deleteAll(Iterable<? extends Bulletin> arg0) {
-		BulletinRepository.deleteAll(arg0);
-	}
-
-	@Override
-	public void deleteById(Integer arg0) {
-		BulletinRepository.deleteById(arg0);
-	}
-
-	@Override
-	public boolean existsById(Integer arg0) {
-		return BulletinRepository.existsById(arg0);
+	public boolean exists(Integer arg0) {
+		return BulletinRepository.exists(arg0);
 	}
 
 	@Override
@@ -49,13 +47,18 @@ public class BulletinMetierImpl implements BulletinService {
 	}
 
 	@Override
-	public Iterable<Bulletin> findAllById(Iterable<Integer> arg0) {
-		return BulletinRepository.findAllById(arg0);
+	public Iterable<Bulletin> findAll(Iterable<Integer> arg0) {
+		return BulletinRepository.findAll(arg0);
 	}
 
 	@Override
-	public Optional<Bulletin> findById(Integer arg0) {
-		return BulletinRepository.findById(arg0);
+	public Bulletin findOne(Integer arg0) {
+		return BulletinRepository.findOne(arg0);
+	}
+
+	@Override
+	public <S extends Bulletin> Iterable<S> save(Iterable<S> arg0) {
+		return BulletinRepository.save(arg0);
 	}
 
 	@Override
@@ -63,10 +66,6 @@ public class BulletinMetierImpl implements BulletinService {
 		return BulletinRepository.save(arg0);
 	}
 
-	@Override
-	public <S extends Bulletin> Iterable<S> saveAll(Iterable<S> arg0) {
-		return BulletinRepository.saveAll(arg0);
-	}
 	
 	
 }

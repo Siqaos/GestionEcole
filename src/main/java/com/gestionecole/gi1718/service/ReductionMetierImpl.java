@@ -1,7 +1,5 @@
 package com.gestionecole.gi1718.service;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +17,16 @@ public class ReductionMetierImpl implements ReductionService {
 	}
 
 	@Override
+	public void delete(Integer arg0) {
+		ReductionRepository.delete(arg0);
+	}
+
+	@Override
+	public void delete(Iterable<? extends Reduction> arg0) {
+		ReductionRepository.delete(arg0);
+	}
+
+	@Override
 	public void delete(Reduction arg0) {
 		ReductionRepository.delete(arg0);
 	}
@@ -29,18 +37,8 @@ public class ReductionMetierImpl implements ReductionService {
 	}
 
 	@Override
-	public void deleteAll(Iterable<? extends Reduction> arg0) {
-		ReductionRepository.deleteAll(arg0);
-	}
-
-	@Override
-	public void deleteById(Integer arg0) {
-		ReductionRepository.deleteById(arg0);
-	}
-
-	@Override
-	public boolean existsById(Integer arg0) {
-		return ReductionRepository.existsById(arg0);
+	public boolean exists(Integer arg0) {
+		return ReductionRepository.exists(arg0);
 	}
 
 	@Override
@@ -49,13 +47,18 @@ public class ReductionMetierImpl implements ReductionService {
 	}
 
 	@Override
-	public Iterable<Reduction> findAllById(Iterable<Integer> arg0) {
-		return ReductionRepository.findAllById(arg0);
+	public Iterable<Reduction> findAll(Iterable<Integer> arg0) {
+		return ReductionRepository.findAll(arg0);
 	}
 
 	@Override
-	public Optional<Reduction> findById(Integer arg0) {
-		return ReductionRepository.findById(arg0);
+	public Reduction findOne(Integer arg0) {
+		return ReductionRepository.findOne(arg0);
+	}
+
+	@Override
+	public <S extends Reduction> Iterable<S> save(Iterable<S> arg0) {
+		return ReductionRepository.save(arg0);
 	}
 
 	@Override
@@ -63,10 +66,7 @@ public class ReductionMetierImpl implements ReductionService {
 		return ReductionRepository.save(arg0);
 	}
 
-	@Override
-	public <S extends Reduction> Iterable<S> saveAll(Iterable<S> arg0) {
-		return ReductionRepository.saveAll(arg0);
-	}
+	
 	
 	
 }

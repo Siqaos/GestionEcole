@@ -6,18 +6,18 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 @Entity
 @Table(name = "aide", catalog = "gestionecole")
-public class Aide  {
+@PrimaryKeyJoinColumn(name = "idPersonne")
+public class Aide  extends Personne {
 
-	private int idAide;
 	private Personne personne;
 	private Transport transport;
 	private String matricule;
@@ -28,15 +28,13 @@ public class Aide  {
 	public Aide() {
 	}
 
-	public Aide(int idAide, Personne personne, Transport transport) {
-		this.idAide = idAide;
+	public Aide(Personne personne, Transport transport) {
 		this.personne = personne;
 		this.transport = transport;
 	}
 
-	public Aide(int idAide, Personne personne, Transport transport, String matricule, String cin, Date dateDebutTravail,
+	public Aide( Personne personne, Transport transport, String matricule, String cin, Date dateDebutTravail,
 			Set<Garde> gardes) {
-		this.idAide = idAide;
 		this.personne = personne;
 		this.transport = transport;
 		this.matricule = matricule;
@@ -45,16 +43,6 @@ public class Aide  {
 		this.gardes = gardes;
 	}
 
-	@Id
-
-	@Column(name = "idAide", unique = true, nullable = false)
-	public int getIdAide() {
-		return this.idAide;
-	}
-
-	public void setIdAide(int idAide) {
-		this.idAide = idAide;
-	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "personne_idPersonne", nullable = false)

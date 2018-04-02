@@ -1,7 +1,5 @@
 package com.gestionecole.gi1718.service;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +17,16 @@ public class SalleMetierImpl implements SalleService {
 	}
 
 	@Override
+	public void delete(Integer arg0) {
+		SalleRepository.delete(arg0);
+	}
+
+	@Override
+	public void delete(Iterable<? extends Salle> arg0) {
+		SalleRepository.delete(arg0);
+	}
+
+	@Override
 	public void delete(Salle arg0) {
 		SalleRepository.delete(arg0);
 	}
@@ -29,18 +37,8 @@ public class SalleMetierImpl implements SalleService {
 	}
 
 	@Override
-	public void deleteAll(Iterable<? extends Salle> arg0) {
-		SalleRepository.deleteAll(arg0);
-	}
-
-	@Override
-	public void deleteById(Integer arg0) {
-		SalleRepository.deleteById(arg0);
-	}
-
-	@Override
-	public boolean existsById(Integer arg0) {
-		return SalleRepository.existsById(arg0);
+	public boolean exists(Integer arg0) {
+		return SalleRepository.exists(arg0);
 	}
 
 	@Override
@@ -49,13 +47,18 @@ public class SalleMetierImpl implements SalleService {
 	}
 
 	@Override
-	public Iterable<Salle> findAllById(Iterable<Integer> arg0) {
-		return SalleRepository.findAllById(arg0);
+	public Iterable<Salle> findAll(Iterable<Integer> arg0) {
+		return SalleRepository.findAll(arg0);
 	}
 
 	@Override
-	public Optional<Salle> findById(Integer arg0) {
-		return SalleRepository.findById(arg0);
+	public Salle findOne(Integer arg0) {
+		return SalleRepository.findOne(arg0);
+	}
+
+	@Override
+	public <S extends Salle> Iterable<S> save(Iterable<S> arg0) {
+		return SalleRepository.save(arg0);
 	}
 
 	@Override
@@ -63,10 +66,7 @@ public class SalleMetierImpl implements SalleService {
 		return SalleRepository.save(arg0);
 	}
 
-	@Override
-	public <S extends Salle> Iterable<S> saveAll(Iterable<S> arg0) {
-		return SalleRepository.saveAll(arg0);
-	}
+	
 	
 	
 }

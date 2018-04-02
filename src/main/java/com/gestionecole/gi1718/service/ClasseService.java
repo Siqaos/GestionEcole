@@ -1,7 +1,5 @@
 package com.gestionecole.gi1718.service;
 
-import java.util.Optional;
-
 import com.gestionecole.gi1718.entites.Classe;
 
 public interface ClasseService {
@@ -10,22 +8,22 @@ public interface ClasseService {
 
 	void delete(Classe arg0);
 
+	void delete(Integer arg0);
+
+	void delete(Iterable<? extends Classe> arg0);
+
 	void deleteAll();
 
-	void deleteAll(Iterable<? extends Classe> arg0);
-
-	void deleteById(Integer arg0);
-
-	boolean existsById(Integer arg0);
+	boolean exists(Integer arg0);
 
 	Iterable<Classe> findAll();
 
-	Iterable<Classe> findAllById(Iterable<Integer> arg0);
+	Iterable<Classe> findAll(Iterable<Integer> arg0);
 
-	Optional<Classe> findById(Integer arg0);
+	Classe findOne(Integer arg0);
+
+	<S extends Classe> Iterable<S> save(Iterable<S> arg0);
 
 	<S extends Classe> S save(S arg0);
-
-	<S extends Classe> Iterable<S> saveAll(Iterable<S> arg0);
 
 }

@@ -5,8 +5,9 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -17,13 +18,12 @@ import javax.persistence.Table;
 @PrimaryKeyJoinColumn(name = "idPersonne")
 public class Eleve extends Personne {
 
-	private int idEleve;
 	private Classe classe;
 	private Inscription inscription;
 	private Niveau niveau;
 	private Personne personne;
 	private Positiongps positiongps;
-	private Responsable responsable;
+	private Set<Responsable> responsable = new HashSet<Responsable>(0);
 	private String matricule;
 	private Set<Retard> retards = new HashSet<Retard>(0);
 	private Set<Bulletin> bulletins = new HashSet<Bulletin>(0);
@@ -33,9 +33,8 @@ public class Eleve extends Personne {
 	public Eleve() {
 	}
 
-	public Eleve(int idEleve, Classe classe, Inscription inscription, Niveau niveau, Personne personne,
-			Positiongps positiongps, Responsable responsable) {
-		this.idEleve = idEleve;
+	public Eleve( Classe classe, Inscription inscription, Niveau niveau, Personne personne,
+			Positiongps positiongps, Set<Responsable> responsable) {
 		this.classe = classe;
 		this.inscription = inscription;
 		this.niveau = niveau;
@@ -44,10 +43,9 @@ public class Eleve extends Personne {
 		this.responsable = responsable;
 	}
 
-	public Eleve(int idEleve, Classe classe, Inscription inscription, Niveau niveau, Personne personne,
-			Positiongps positiongps, Responsable responsable, String matricule, Set<Retard> retards,
+	public Eleve( Classe classe, Inscription inscription, Niveau niveau, Personne personne,
+			Positiongps positiongps, Set<Responsable> responsable, String matricule, Set<Retard> retards,
 			Set<Bulletin> bulletins, Set<Observation> observations, Set<Absence> absences) {
-		this.idEleve = idEleve;
 		this.classe = classe;
 		this.inscription = inscription;
 		this.niveau = niveau;
@@ -61,16 +59,6 @@ public class Eleve extends Personne {
 		this.absences = absences;
 	}
 
-	@Id
-
-	@Column(name = "idEleve", unique = true, nullable = false)
-	public int getIdEleve() {
-		return this.idEleve;
-	}
-
-	public void setIdEleve(int idEleve) {
-		this.idEleve = idEleve;
-	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "Classe_idClasse", nullable = false)
@@ -122,13 +110,15 @@ public class Eleve extends Personne {
 		this.positiongps = positiongps;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "Responsable_idResponsable", nullable = false)
-	public Responsable getResponsable() {
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "responsable_eleve", catalog = "gestionecole", joinColumns = {
+			@JoinColumn(name = "idResponsable", nullable = false, updatable = false) }, inverseJoinColumns = {
+					@JoinColumn(name = "idEleve", nullable = false, updatable = false) })
+	public Set<Responsable> getResponsable() {
 		return this.responsable;
 	}
 
-	public void setResponsable(Responsable responsable) {
+	public void setResponsable(Set<Responsable> responsable) {
 		this.responsable = responsable;
 	}
 
