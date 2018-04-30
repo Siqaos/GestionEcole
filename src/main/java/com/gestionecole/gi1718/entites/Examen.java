@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 @Entity
 @Table(name = "examen", catalog = "gestionecole")
@@ -20,7 +21,8 @@ public class Examen {
 	private String numExamen;
 	private Integer pourcentage;
 	private Set<Note> notes = new HashSet<Note>(0);
-
+	private Classe classe;
+	private boolean  valide;
 	public Examen() {
 	}
 
@@ -97,5 +99,20 @@ public class Examen {
 	public void setNotes(Set<Note> notes) {
 		this.notes = notes;
 	}
+	@Column(name = "valide")
+	public boolean isValide() {
+		return valide;
+	}
 
+	public void setValide(boolean valide) {
+		this.valide = valide;
+	}
+	@OneToOne(fetch = FetchType.LAZY)
+	public Classe getClasse() {
+		return this.classe;
+	}
+
+	public void setClasse( Classe classe) {
+		this.classe = classe;
+	}
 }

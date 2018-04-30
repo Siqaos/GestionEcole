@@ -26,4 +26,6 @@ public interface ObservationService {
 
 	<S extends Observation> S save(S arg0);
 
+	<S extends Observation> S saveObservation(S arg0, String matiere, String eleve);
+
 }

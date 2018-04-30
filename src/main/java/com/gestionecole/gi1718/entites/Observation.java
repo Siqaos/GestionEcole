@@ -18,6 +18,7 @@ public class Observation  {
 	private String remarque;
 	private String date;
 	private int elevePositionGpsIdPosition;
+	private Matiere matiere;
 	private int elevePersonneIdPersonne;
 
 	public Observation() {
@@ -109,5 +110,13 @@ public class Observation  {
 	public void setElevePersonneIdPersonne(int elevePersonneIdPersonne) {
 		this.elevePersonneIdPersonne = elevePersonneIdPersonne;
 	}
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "Matiere_idMAtiere", nullable = false)
+	public Matiere getMatiere() {
+		return this.matiere;
+	}
 
+	public void setMatiere(Matiere matiere) {
+		this.matiere = matiere;
+	}
 }

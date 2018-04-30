@@ -26,4 +26,6 @@ public interface ProfesseurService {
 
 	<S extends Professeur> S save(S arg0);
 
+	Professeur findByMatricule(String arg0);
+
 }

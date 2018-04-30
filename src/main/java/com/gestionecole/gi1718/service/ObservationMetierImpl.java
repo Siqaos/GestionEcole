@@ -3,6 +3,8 @@ package com.gestionecole.gi1718.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.gestionecole.gi1718.dao.EleveRepository;
+import com.gestionecole.gi1718.dao.MatiereRepository;
 import com.gestionecole.gi1718.dao.ObservationRepository;
 import com.gestionecole.gi1718.entites.Observation;
 
@@ -10,7 +12,11 @@ import com.gestionecole.gi1718.entites.Observation;
 public class ObservationMetierImpl implements ObservationService  {
 	@Autowired
 	private ObservationRepository ObservationRepository;
-
+	@Autowired
+	private EleveRepository eleveRepository;
+	
+	@Autowired
+	private MatiereRepository matiereRepository;
 	@Override
 	public long count() {
 		return ObservationRepository.count();
@@ -65,6 +71,11 @@ public class ObservationMetierImpl implements ObservationService  {
 	public <S extends Observation> S save(S arg0) {
 		return ObservationRepository.save(arg0);
 	}
-
+	@Override
+	public <S extends Observation> S saveObservation(S arg0,String matiere ,String eleve) {
+		arg0.setEleve(eleveRepository.findByMatricule(eleve));
+		arg0.setMatiere(matiereRepository.findByNom(matiere));
+		return ObservationRepository.save(arg0);
+	}
 	
 }

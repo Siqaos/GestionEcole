@@ -7,7 +7,7 @@ import com.gestionecole.gi1718.dao.AideRepository;
 import com.gestionecole.gi1718.entites.Aide;
 
 @Service
-public class AideMetierImpl implements AideService  {
+public class AideMetierImpl implements  AideService  {
 	@Autowired
 	private AideRepository AideRepository;
 
@@ -64,6 +64,11 @@ public class AideMetierImpl implements AideService  {
 	@Override
 	public <S extends Aide> S save(S arg0) {
 		return AideRepository.save(arg0);
+	}
+
+	@Override
+	public Aide findByMatricule(String matricule) {
+		return AideRepository.findByMatricule(matricule);
 	}
 
 

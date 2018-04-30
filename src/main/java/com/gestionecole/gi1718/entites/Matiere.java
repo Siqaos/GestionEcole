@@ -23,6 +23,8 @@ public class Matiere {
 	private String nombreExamen;
 	private Set<Seance> seances = new HashSet<Seance>(0);
 	private Set<Examen> examens = new HashSet<Examen>(0);
+	private Set<Absence> absences = new HashSet<Absence>(0);
+	private Set<Devoir> devoirs = new HashSet<Devoir>(0);
 
 	public Matiere() {
 	}
@@ -63,6 +65,14 @@ public class Matiere {
 
 	public void setUnite(Unite unite) {
 		this.unite = unite;
+	}
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "matiere")
+	public Set<Absence> getAbsences() {
+		return this.absences;
+	}
+
+	public void setAbsences(Set<Absence> absences) {
+		this.absences = absences;
 	}
 
 	@Column(name = "NomMatiere", length = 45)
@@ -118,5 +128,12 @@ public class Matiere {
 	public void setExamens(Set<Examen> examens) {
 		this.examens = examens;
 	}
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "matiere")
+	public Set<Devoir> getDevoirs() {
+		return this.devoirs;
+	}
 
+	public void setDevoirs(Set<Devoir> devoirs) {
+		this.devoirs = devoirs;
+	}
 }

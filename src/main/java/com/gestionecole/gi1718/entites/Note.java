@@ -19,6 +19,8 @@ public class Note {
 	private Examen examen;
 	private String noteExam;
 	private String remarque;
+	private Eleve eleve;
+	private Matiere matiere;
 	private Set<Bulletin> bulletins = new HashSet<Bulletin>(0);
 
 	public Note() {
@@ -84,5 +86,22 @@ public class Note {
 	public void setBulletins(Set<Bulletin> bulletins) {
 		this.bulletins = bulletins;
 	}
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "Eleve_idPersonne", nullable = false)
+	public Eleve getEleve() {
+		return eleve;
+	}
 
+	public void setEleve(Eleve eleve) {
+		this.eleve = eleve;
+	}
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "matiere_idMatiere", nullable = false)
+	public Matiere getMatiere() {
+		return matiere;
+	}
+	public void setMatiere(Matiere matiere) {
+		this.matiere = matiere;
+	}
+	
 }

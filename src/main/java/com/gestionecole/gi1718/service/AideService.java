@@ -26,4 +26,6 @@ public interface AideService {
 
 	<S extends Aide> S save(S arg0);
 
+	Aide findByMatricule(String matricule);
+
 }

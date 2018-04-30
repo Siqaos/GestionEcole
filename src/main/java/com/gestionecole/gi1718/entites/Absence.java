@@ -20,7 +20,8 @@ public class Absence {
 	private Eleve eleve;
 	private Seance seance;
 	private Date dateAbsence;
-
+	private Matiere matiere;
+	
 	public Absence() {
 	}
 
@@ -42,6 +43,16 @@ public class Absence {
 	@Column(name = "idAbsence", unique = true, nullable = false)
 	public int getIdAbsence() {
 		return this.idAbsence;
+	}
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "Matiere_idMatiere", nullable = false)
+	public Matiere getMatiere() {
+		return this.matiere;
+	}
+
+	public void setMatiere(Matiere m) {
+		this.matiere = m;
 	}
 
 	public void setIdAbsence(int idAbsence) {

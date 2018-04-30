@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<!-- Latest compiled and minified CSS -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"> -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+
+<!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
+	<title></title>
+	<link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<div class="container">
+    <div ng-include="'finance.html'">
+ 		<div class="tab-content" >
+		    <div id="home" class="tab-pane fade in active">
+		      <form name="myForm">
+					<hr>
+					
+					<div class="row">
+						<div class="col-sm-6 form-group">
+						<label>date</label>
+						<input type="text" ng-model="facture.date" placeholder="Entrer le Nom" class="form-control" name="nom" id="nom" >
+						</div>
+						<div class="col-sm-6 form-group">
+						<label>montant</label>
+						<input type="text" ng-model="facture.motant" placeholder="Entrer le Prénom.." class="form-control" name="prenom" id="prenom">
+						</div>
+					
+           				</div>
+
+					<div class="row">
+						<div class="col-sm-6 form-group">
+                                                <label>fournisseur</label>
+						<select  ng-model="perso.pays" id="pays" name="pays" class="form-control">
+						<option value="" label="--- Selectionner le pays ---"/>
+						<option value="Afghanistan" label="Afghanistan"/>
+						<option value="Algeria" label="Algeria"/>
+						<option value="Andorra" label="Andorra"/>
+						<option value="Angola" label="Angola"/>
+						<option value="Argentina" label="Argentina"/>
+						<option value="Australia" label="Australia"/>
+						<option value="Bahrain" label="Bahrain"/>
+						<option value="Bangladesh" label="Bangladesh"/>
+						</select>
+						</div>
+
+						<div class="col-sm-6 form-group">
+						<label>marchadise</label>
+						<input type="text" ng-model="perso.codePostale" placeholder="Entrer le code postale" class="form-control" name="codepostale" id="codepostale" name="ville" id="ville">
+						</div>
+
+
+				 	</div>	
+<hr>
+
+					
+						 
+					</div>
+
+					    
+                                       <button  ng-click="saveFacture()" type="button" class="btn btn-info">Valider<button>				
+					 
+			</form> 
+
+		</div>		    	 	     
+</div></div>	</div>
+
+
+</body>
+</html>

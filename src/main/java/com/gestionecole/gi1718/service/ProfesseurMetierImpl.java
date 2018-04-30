@@ -65,7 +65,10 @@ public class ProfesseurMetierImpl implements ProfesseurService  {
 	public <S extends Professeur> S save(S arg0) {
 		return ProfesseurRepository.save(arg0);
 	}
-
+	@Override
+	public Professeur findByMatricule(String arg0) {
+		return ProfesseurRepository.findByMatricule(arg0);
+	}
 	
 	
 }

@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gestionecole.gi1718.dao.AbsenceRepository;
+import com.gestionecole.gi1718.dao.EleveRepository;
+import com.gestionecole.gi1718.dao.MatiereRepository;
 import com.gestionecole.gi1718.entites.Absence;
 
 @Service
@@ -12,6 +14,10 @@ public class AbsenceMetierImpl implements AbsenceService  {
 
 	@Autowired
 	private AbsenceRepository AbsenceRepository;
+	@Autowired
+	private EleveRepository eleveRepository;
+	@Autowired
+	private MatiereRepository matiereRepository;
 	@Override
 	public long count() {
 		return AbsenceRepository.count();
@@ -61,7 +67,13 @@ public class AbsenceMetierImpl implements AbsenceService  {
 	public <S extends Absence> S save(S arg0) {
 		return AbsenceRepository.save(arg0);
 	}
-
+	
+	@Override
+	public <S extends Absence> S saveAbsence(S arg0,String matriculeEleve,String matiere) {
+		arg0.setEleve(eleveRepository.findByMatricule(matriculeEleve));
+		arg0.setMatiere(matiereRepository.findByNom(matiere));
+		return AbsenceRepository.save(arg0);
+	}
 	
 	
 }

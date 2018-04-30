@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html >
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css"> -->
+  
+
+<title></title>
+<link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body ng-app="ecole" >
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<div class="container">
+    <div class="row profile">
+		<div class="col-md-3">
+			<div class="profile-sidebar">
+				<!-- SIDEBAR USERPIC -->
+				<div class="profile-userpic">
+				</div>
+				<!-- END SIDEBAR USERPIC -->
+				<!-- SIDEBAR USER TITLE -->
+				<div class="profile-usertitle">
+					<div align="center">
+  						<img src="images/user.png" class="center img-responsive img-circle" alt="user" style="width:50%	">
+					</div>
+					<div class="profile-usertitle-name">
+						Your Name
+					</div>
+					<div class="profile-usertitle-job">
+						username
+					</div>
+				</div>
+				<!-- END SIDEBAR USER TITLE -->
+				<!-- SIDEBAR BUTTONS -->
+				<div class="profile-userbuttons">
+					<button type="button" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-edit"></i> Edit</button>
+					<button type="button" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-envelope"></i> Message</button>
+				</div>
+				<!-- END SIDEBAR BUTTONS -->
+				<!-- SIDEBAR MENU -->
+				<div class="profile-usermenu">
+					<ul class="nav">
+
+						<li >
+							<a href="#">
+							<i class="glyphicon glyphicon-home"></i>
+							Home</a>
+						</li>
+
+<!-- 						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-user"></i>
+							Account Settings </a>
+						</li> -->
+
+						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-user"></i>
+							Mon Profile </a>
+						</li>
+
+						<li>
+							<a href="listeinscriptions.html">
+							<i class="glyphicon glyphicon-stats"></i>
+							Gestion d'Élèves </a>
+						</li>
+
+						<li class="active">
+							<a href="inscription.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Inscription </a>
+						</li>
+
+						<li>
+							<a href="fraisinscription.html">
+							<i class="glyphicon glyphicon-euro"></i>
+							Frais d'inscription </a>
+						</li>
+
+						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-plus"></i>
+							Ajout à un service </a>
+						</li>
+
+						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-off"></i>
+							Se déconnecter </a>
+						</li>
+
+					</ul>
+				</div>
+				<!-- END MENU -->
+			</div>
+		</div>
+		<div class="col-md-9" style="background-color: white">
+		<br>
+        <div class="container">
+				<div class="row">
+					
+			        
+			        
+			       <div class="col-md-8 ">
+
+			<div class="panel panel-default">
+			  <div class="panel-heading">  <h4 >Fiche Élève</h4></div>
+			   <div class="panel-body">
+			       
+			    <div class="box box-info">
+			        
+			            <div class="box-body">
+			                     <div class="col-sm-12">
+			                     <div  align="center"> <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive" style="max-width:28%"> 
+			                
+
+			<!-- <div style="color:#999;" >click here to change profile image</div> -->
+			                <!--Upload Image Js And Css-->
+			           
+			              
+			   
+			                
+			                
+			                     
+			                     
+			                     </div>
+			              
+			              <br>
+			    
+			              <!-- /input-group -->
+			            </div>
+<!-- 			            <div class="col-sm-6">
+			            <h4 style="color:#00b1b1;">Prasad Shankar Huddedar </h4></span>
+			              <span><p>Aspirant</p></span>            
+			            </div> -->
+<!-- 			            <div class="clearfix"></div>
+			            <hr style="margin:5px 0 5px 0;"> -->
+			    
+			<!-- <div style="text-align: center"> -->   
+				<div class="col-md-12 col-lg-12"> 
+                  <table class="table table-user-information" style="text-align: center">
+                    <tbody>
+                      <tr>
+                        <td align="right" style="width:40%">Sexe :</td>
+                        <td >{{eleve.sexe}}</td>
+                      </tr>
+                      <tr>
+                      <tr>
+                        <td align="right">Nom :</td>
+                        <td>{{eleve.nom}}</td>
+                      </tr>
+                      <tr>
+                        <td align="right">Prenom :</td>
+                        <td>{{eleve.prenom}}</td>
+                      </tr>
+                      <tr>
+                        <td align="right">Email :</td>
+                        <td><a href="">{{eleve.email}}</a></td>
+                      </tr>
+                      <tr>
+                        <td align="right">Adresse :</td>
+                        <td>{{eleve.adresse}}</td>
+                      </tr>
+                      <tr>
+                        <td align="right">Tel :</td>
+                        <td>{{eleve.tel}}</td>
+                      </tr>
+                      <tr>
+                        <td align="right">Code postale :</td>
+                        <td>{{eleve.codePostale}}</td>
+                      </tr>
+                      <tr>
+                        <td align="right">Ville :</td>
+                        <td>{{eleve.ville}}</td>
+                      </tr>
+                      <tr>
+                        <td align="right">Pays :</td>
+                        <td>{{eleve.pays}}</td>  
+                      </tr>
+                     
+                    </tbody>
+                  </table>         
+			</div>
+
+			            <!-- /.box-body -->
+			<!-- </div> -->
+			          <!-- /.box -->
+
+			        </div>
+			       
+			            
+			    </div> 
+			    </div>
+			</div>  
+
+
+   </div>
+</div>
+        	
+
+		</div>
+	</div>		
+	</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<html>
+
+
+
+<script>
+    var me = document.currentScript.ownerDocument;
+    var post = me.querySelector( '#template-content' );
+
+    var container = document.querySelectorAll( '.template-container' );
+
+    //alert( container.length );
+    for(i=0; i<container.length ; i++) {
+        container[i].appendChild( post.cloneNode( true ) );
+    }
+</script>
+<body>
+<span id="template-content">
+    Template Hello World!
+</span>
+</body>
+
+</html>

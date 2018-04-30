@@ -20,7 +20,7 @@ public class Classe  {
 	private Niveau niveau;
 	private Set<Eleve> eleves = new HashSet<Eleve>(0);
 	private Set<Seance> seances = new HashSet<Seance>(0);
-
+	private Set<Devoir> devoirs = new HashSet<Devoir>(0);
 	public Classe() {
 	}
 
@@ -37,7 +37,6 @@ public class Classe  {
 	}
 
 	@Id
-
 	@Column(name = "idClasse", unique = true, nullable = false)
 	public int getIdClasse() {
 		return this.idClasse;
@@ -74,5 +73,12 @@ public class Classe  {
 	public void setSeances(Set<Seance> seances) {
 		this.seances = seances;
 	}
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "classe")
+	public Set<Devoir> getDevoirs() {
+		return this.devoirs;
+	}
 
+	public void setDevoirs(Set<Devoir> devoirs) {
+		this.devoirs = devoirs;
+	}
 }

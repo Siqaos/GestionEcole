@@ -26,4 +26,6 @@ public interface GardeService {
 
 	<S extends Garde> S save(S arg0);
 
+	<S extends Garde> S save(S arg0, String matricule, String matriculeAide);
+
 }

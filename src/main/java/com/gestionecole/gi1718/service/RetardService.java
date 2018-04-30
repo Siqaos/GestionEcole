@@ -25,5 +25,8 @@ public interface RetardService {
 	<S extends Retard> Iterable<S> save(Iterable<S> arg0);
 
 	<S extends Retard> S save(S arg0);
+	
+	public <S extends Retard> S saveRetard(S arg0,String matriculeEleve,String matiere) ;
+
 
 }

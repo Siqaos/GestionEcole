@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html >
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<title></title>
+<link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body ng-app="ecole" >
+<!-- <script type="text/javascript" src="../node_modules/angular/angular.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!-- <script type="text/javascript" src="../js/app.js"></script> -->
+<!-- <script src="../node_modules/angular-utils-pagination/dirPagination.js"></script> -->
+
+<div class="container">
+    <div class="row profile">
+		<div class="col-md-3">
+			<div class="profile-sidebar">
+				<!-- SIDEBAR USERPIC -->
+				<div class="profile-userpic">
+				</div>
+				<!-- END SIDEBAR USERPIC -->
+				<!-- SIDEBAR USER TITLE -->
+				<div class="profile-usertitle">
+					<div align="center">
+  						<img src="images/user.png" class="center img-responsive img-circle" alt="user" style="width:50%	">
+					</div>
+					<div class="profile-usertitle-name">
+						Your Name
+					</div>
+					<div class="profile-usertitle-job">
+						username
+					</div>
+				</div>
+				<!-- END SIDEBAR USER TITLE -->
+				<!-- SIDEBAR BUTTONS -->
+				<div class="profile-userbuttons">
+					<button type="button" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-edit"></i> Edit</button>
+					<button type="button" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-envelope"></i> Message</button>
+				</div>
+				<!-- END SIDEBAR BUTTONS -->
+				<!-- SIDEBAR MENU -->
+				<div class="profile-usermenu">
+					<ul class="nav">
+
+						<li >
+							<a href="#">
+							<i class="glyphicon glyphicon-home"></i>
+							Home</a>
+						</li>
+
+<!-- 						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-user"></i>
+							Account Settings </a>
+						</li> -->
+
+						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-user"></i>
+							Mon Profile </a>
+						</li>
+
+						<li>
+							<a href="listeinscriptions.html">
+							<i class="glyphicon glyphicon-stats"></i>
+							Gestion des élèves </a>
+						</li>
+
+						<li class="active">
+							<a href="inscription.html">
+							<i class="glyphicon glyphicon-list-alt"></i>
+							Inscription </a>
+						</li>
+
+						<li>
+							<a href="fraisinscription.html">
+							<i class="glyphicon glyphicon-euro"></i>
+							Frais d'inscription </a>
+						</li>
+
+						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-plus"></i>
+							Ajout a un service </a>
+						</li>
+
+						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-off"></i>
+							Se déconnecter </a>
+						</li>
+
+					</ul>
+				</div>
+				<!-- END MENU -->
+			</div>
+		</div>
+		
+<!-- 		<div class="col-md-9" style="background-color: white"> -->
+
+<!--         	<h3 class="well" s>Liste des professeurs</h3> -->
+<!--         	<div class="col-md-1"></div> -->
+<!--         	<button type="button" class="btn btn-success" style="float: right;" >Ajouter </button> -->
+<!-- 			<div class="col-md-10"> -->
+<!-- 	        	<table class="table table-striped"> -->
+<!-- 					<thead> -->
+<!-- 						<tr> -->
+<!-- 							<th>Professeur</th> -->
+<!-- 					        <th>Diplome</th> -->
+<!-- 					        <th>Cours associÃ©</th> -->
+<!-- 					        <th></th> -->
+<!-- 						</tr> -->
+<!-- 					</thead> -->
+
+<!-- 					<tbody> -->
+
+<!-- 					</tbody> -->
+
+<!-- 				</table> -->
+<!-- 		  	</div> -->
+<!-- 			<div class="col-md-1"></div> -->
+<!-- 		 </div> -->
+
+
+
+
+
+		<div class="col-md-9" style="background-color: white">
+<!-- 				<a href="" ng-click='afficherlistProf()'>List</a> -->
+				<div>
+					<br>
+					<div style="float:right;">
+						<i class="fa fa-search"></i> <label for="search">Search : </label>
+						<input type="text" ng-model="search">
+					</div>
+					<br>
+					
+					<br>
+					<div>
+						<h3 class="well" s>Liste des professeurs </h3>
+						<table class="table table-striped">
+		
+							    <thead>
+							        <tr style="cursor: pointer;">
+							            <th ng-click="sort('idPersonne')">Id
+							                <span class="glyphicon sort-icon" ng-show="sortKey=='idPersonne'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+							            </th>
+							            <th ng-click="sort('nom')">Professeur
+							                <span class="glyphicon sort-icon" ng-show="sortKey=='nom'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+							            </th>
+							            <th ng-click="sort('email')">Email
+							                <span class="glyphicon sort-icon" ng-show="sortKey=='email'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+							            </th>
+							            <th>Cours associé</th>
+										<th></th>
+							        </tr>
+							    </thead>
+							   
+								    
+								<tbody>
+									<tr dir-paginate="p in professeurs.content | itemsPerPage: 4 |filter:search|orderBy:sortKey:reverse">
+										<td>{{p.idPersonne}}</td>
+										<td>{{p.nom+" "+p.prenom}}</td>
+										<td>{{p.email}}</td>	
+										<th>...</th>
+										<td>
+<!-- 											<a ui-sref='ficheProf' ng-click='getProf(p._links.self.href)'>voir</a> -->
+											<a ng-click="afficher(p.idPersonne)"  data-toggle="modal" data-target="#login-modal" class="btn btn-primary">Afficher</a>
+<!-- 											<button class="btn btn-success">Afficher</button> -->
+										</td>
+							        </tr>
+								</tbody>
+		
+						</table>
+						
+						
+						
+						
+						
+						</div>
+							<div align="center">
+							    <dir-pagination-controls
+							       	max-size="100"
+							       	direction-links="true"
+							       	boundary-links="true" >
+							    </dir-pagination-controls>
+							</div>
+						</div>	
+						
+						
+		
+						
+						
+<!-- 			<div id="afficher" class="container" style="display: none;"> -->
+<!-- 				<div class="row"> -->
+
+<!-- 			    <div class="col-md-8 "> -->
+
+<!-- 			<div class="panel panel-default"> -->
+<!-- 					  <div class="panel-heading">  <h4 >Fiche Professeur</h4></div> -->
+<!-- 					   <div class="panel-body"> -->
+					       
+<!-- 					    <div class="box box-info"> -->
+					        
+<!-- 					            <div class="box-body"> -->
+<!-- 					                     <div class="col-sm-12"> -->
+<!-- 					                     <div  align="center"> <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive" style="max-width:26%">       -->
+<!-- 					                     </div> -->
+					              
+<!-- 					              <br> -->
+					    
+<!-- 					              /input-group -->
+<!-- 					            </div> -->
+<!-- 		<!-- 			            <div class="col-sm-6"> -->
+<!-- 					            <h4 style="color:#00b1b1;">Prasad Shankar Huddedar </h4></span> -->
+<!-- 					              <span><p>Aspirant</p></span>             -->
+<!-- 					            </div> --> 
+<!-- 		<!-- 			            <div class="clearfix"></div> -->
+<!-- 					            <hr style="margin:5px 0 5px 0;"> --> 
+					    
+<!-- 					<div style="text-align: center">    -->
+<!-- 						<div class="col-md-12 col-lg-12">  -->
+<!-- 		                  <table class="table table-user-information" style="text-align: center"> -->
+<!-- 		                    <tbody> -->
+<!-- 		                      <tr> -->
+<!-- 		                        <td align="right" style="width:40%">Sexe :</td> -->
+<!-- 		                        <td >{{professeur.sexe}}</td> -->
+<!-- 		                      </tr> -->
+<!-- 		                      <tr> -->
+<!-- 		                      <tr> -->
+<!-- 		                        <td align="right">Nom :</td> -->
+<!-- 		                        <td>{{professeur.nom}}</td> -->
+<!-- 		                      </tr> -->
+<!-- 		                      <tr> -->
+<!-- 		                        <td align="right">Prenom :</td> -->
+<!-- 		                        <td>{{professeur.prenom}}</td> -->
+<!-- 		                      </tr> -->
+<!-- 		                      <tr> -->
+<!-- 		                        <td align="right">Email :</td> -->
+<!-- 		                        <td><a href="">{{professeur.email}}</a></td> -->
+<!-- 		                      </tr> -->
+<!-- 		                      <tr> -->
+<!-- 		                        <td align="right">Adresse :</td> -->
+<!-- 		                        <td>{{professeur.adresse}}</td> -->
+<!-- 		                      </tr> -->
+<!-- 		                      <tr> -->
+<!-- 		                        <td align="right">Tel :</td> -->
+<!-- 		                        <td>{{professeur.tel}}</td> -->
+<!-- 		                      </tr> -->
+<!-- 		                      <tr> -->
+<!-- 		                        <td align="right">Code postale :</td> -->
+<!-- 		                        <td>{{professeur.codePostale}}</td> -->
+<!-- 		                      </tr> -->
+<!-- 		                      <tr> -->
+<!-- 		                        <td align="right">Ville :</td> -->
+<!-- 		                        <td>{{professeur.ville}}</td> -->
+<!-- 		                      </tr> -->
+<!-- 		                      <tr> -->
+<!-- 		                        <td align="right">Pays :</td> -->
+<!-- 		                        <td>{{professeur.pays}}</td>   -->
+<!-- 		                      </tr> -->
+		                     
+<!-- 		                    </tbody> -->
+<!-- 		                  </table>          -->
+<!-- 						</div> -->
+		
+<!-- 					        </div> -->
+					       
+					            
+<!-- 					    </div>  -->
+<!-- 					    </div> -->
+<!-- 			</div>   -->
+
+
+<!--    </div> -->
+<!-- </div> -->
+        	
+
+<!-- 		</div>			 -->
+						
+						
+						
+						
+						
+						
+						
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!------ Include the above in your HEAD tag ---------->
+
+<!-- <a href="#" data-toggle="modal" data-target="#login-modal">Login</a> -->
+
+		<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    		<div class="modal-dialog">
+<!-- 				<div class="loginmodal-container"> -->
+<!-- 					<h1>Login to Your Account</h1><br> -->
+<!-- 				  	<form> -->
+<!-- 						<input type="text" name="user" placeholder="Username"> -->
+<!-- 						<input type="password" name="pass" placeholder="Password"> -->
+<!-- 						<input type="submit" name="login" class="login loginmodal-submit" value="Login"> -->
+<!-- 				  	</form> -->
+					
+<!-- 					<div class="login-help"> -->
+<!-- 						<a href="#">Register</a> - <a href="#">Forgot Password</a> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+
+
+
+
+<!-- <div class="row"> -->
+
+<!-- 			    <div class="col-md-8 "> -->
+
+			<div class="panel panel-default">
+					  <div class="panel-heading">  <h4 >Fiche Professeur</h4></div>
+					   <div class="panel-body">
+					       
+					    <div class="box box-info">
+					        
+					            <div class="box-body">
+					                     <div class="col-sm-12">
+					                     <div  align="center"> <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive" style="max-width:26%">      
+					                     </div>
+					              
+					              <br>
+					    
+					              <!-- /input-group -->
+					            </div>
+		<!-- 			            <div class="col-sm-6">
+					            <h4 style="color:#00b1b1;">Prasad Shankar Huddedar </h4></span>
+					              <span><p>Aspirant</p></span>            
+					            </div> -->
+		<!-- 			            <div class="clearfix"></div>
+					            <hr style="margin:5px 0 5px 0;"> -->
+					    
+					<!-- <div style="text-align: center"> -->   
+						<div class="col-md-12 col-lg-12"> 
+		                  <table class="table table-user-information" style="text-align: center">
+		                    <tbody>
+		                      <tr>
+		                        <td align="right" style="width:40%">Sexe :</td>
+		                        <td >{{professeur.sexe}}</td>
+		                      </tr>
+		                      <tr>
+		                      <tr>
+		                        <td align="right">Nom :</td>
+		                        <td>{{professeur.nom}}</td>
+		                      </tr>
+		                      <tr>
+		                        <td align="right">Prenom :</td>
+		                        <td>{{professeur.prenom}}</td>
+		                      </tr>
+		                      <tr>
+		                        <td align="right">Email :</td>
+		                        <td><a href="">{{professeur.email}}</a></td>
+		                      </tr>
+		                      <tr>
+		                        <td align="right">Adresse :</td>
+		                        <td>{{professeur.adresse}}</td>
+		                      </tr>
+		                      <tr>
+		                        <td align="right">Tel :</td>
+		                        <td>{{professeur.tel}}</td>
+		                      </tr>
+		                      <tr>
+		                        <td align="right">Code postale :</td>
+		                        <td>{{professeur.codePostale}}</td>
+		                      </tr>
+		                      <tr>
+		                        <td align="right">Ville :</td>
+		                        <td>{{professeur.ville}}</td>
+		                      </tr>
+		                      <tr>
+		                        <td align="right">Pays :</td>
+		                        <td>{{professeur.pays}}</td>  
+		                      </tr>
+		                     
+		                    </tbody>
+		                  </table>         
+						</div>
+		
+					        </div>
+					       
+					            
+					    </div> 
+					    </div>
+			</div>  
+
+
+   </div>
+</div>
+
+
+
+
+			</div>
+		</div>
+
+
+
+<!-- 	</div>		 -->
+<!-- </div> -->
+
+
+</body>
+</html>

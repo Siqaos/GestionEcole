@@ -26,4 +26,5 @@ public interface AbsenceService {
 
 	<S extends Absence> S save(S arg0);
 
+	<S extends Absence> S  saveAbsence(S arg0, String matriculeEleve,String matiere);
 }

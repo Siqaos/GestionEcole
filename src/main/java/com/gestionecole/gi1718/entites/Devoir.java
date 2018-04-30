@@ -18,7 +18,8 @@ public class Devoir  {
 	private String tache;
 	private String dateDevoir;
 	private String afairele;
-
+	private Classe classe;
+	private Matiere matiere;
 	public Devoir() {
 	}
 
@@ -82,5 +83,23 @@ public class Devoir  {
 	public void setAfairele(String afairele) {
 		this.afairele = afairele;
 	}
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "Matiere_idMatiere", nullable = false)
+	public Matiere getMatiere() {
+		return this.matiere;
+	}
 
+	public void setMatiere(Matiere m) {
+		this.matiere = m;
+	}
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "Classe_idClasse", nullable = false)
+	public Classe getClasse() {
+		return this.classe;
+	}
+
+	public void setClasse(Classe classe) {
+		this.classe = classe;
+	}
 }

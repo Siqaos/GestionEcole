@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -24,7 +25,9 @@ public class Cahiertexte {
 	private String heure;
 	private String tache;
 	private Set<Seance> seances = new HashSet<Seance>(0);
-
+	private Matiere matiere;
+	private Classe classe;
+	
 	public Cahiertexte() {
 	}
 
@@ -91,7 +94,13 @@ public class Cahiertexte {
 	public void setTache(String tache) {
 		this.tache = tache;
 	}
+	public Matiere getMatiere() {
+		return this.matiere;
+	}
 
+	public void setMatiere( Matiere matiere) {
+		this.matiere = matiere;
+	}
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "cahiertexte")
 	public Set<Seance> getSeances() {
 		return this.seances;
@@ -100,5 +109,13 @@ public class Cahiertexte {
 	public void setSeances(Set<Seance> seances) {
 		this.seances = seances;
 	}
+	@OneToOne(fetch = FetchType.LAZY)
+//	@PrimaryKeyJoinColumn
+	public Classe getClasseCahier() {
+		return this.classe;
+	}
 
+	public void setClasseCahier( Classe classe) {
+		this.classe = classe;
+	}
 }

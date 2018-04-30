@@ -18,7 +18,8 @@ public class Retard {
 	private Eleve eleve;
 	private Seance seance;
 	private String retardcol;
-
+	private Matiere matiere;
+	
 	public Retard() {
 	}
 
@@ -74,5 +75,15 @@ public class Retard {
 	public void setRetardcol(String retardcol) {
 		this.retardcol = retardcol;
 	}
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "Matiere_idMatiere", nullable = false)
+	public Matiere getMatiere() {
+		return this.matiere;
+	}
+
+	public void setMatiere(Matiere m) {
+		this.matiere = m;
+	}
+	 
 
 }

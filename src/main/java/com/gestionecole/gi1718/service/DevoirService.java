@@ -25,5 +25,7 @@ public interface DevoirService {
 	<S extends Devoir> Iterable<S> save(Iterable<S> arg0);
 
 	<S extends Devoir> S save(S arg0);
+	
+	public <S extends Devoir> S saveDevoir(S arg0,String matiere,String classe);
 
 }
